@@ -4,10 +4,10 @@ import Reveal from "./motion/Reveal";
 import type { Offering } from "@/lib/types";
 
 const SIZE_CLASSES: Record<string, string> = {
-  large: "md:col-span-2 md:row-span-2 min-h-[360px]",
-  vertical: "md:row-span-2 min-h-[360px]",
-  wide: "md:col-span-2 min-h-[220px]",
-  small: "min-h-[220px]",
+  large: "h-[280px] md:col-span-2 md:row-span-2 md:h-auto",
+  vertical: "h-[280px] md:row-span-2 md:h-auto",
+  wide: "h-[240px] md:col-span-2 md:h-auto",
+  small: "h-[240px] md:h-auto",
 };
 
 export default function FeaturedItem({ offering, index }: { offering: Offering; index: number }) {

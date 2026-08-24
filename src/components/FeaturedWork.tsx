@@ -16,8 +16,8 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   }, [items, tab]);
 
   return (
-    <section id="work" className="relative mx-auto max-w-[1400px] px-6 py-28 md:px-10 md:py-36">
-      <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-14">
+    <section id="work" className="relative mx-auto max-w-[1400px] px-4 py-20 md:px-10 md:py-36">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-10 md:mb-14">
         <div>
           <Reveal>
             <p className="eyebrow mb-4">Selected Work</p>
@@ -54,7 +54,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
 
       <div
         key={tab}
-        className="grid auto-rows-[240px] grid-cols-1 gap-6 [grid-auto-flow:dense] sm:grid-cols-2 md:grid-cols-4"
+        className="grid grid-cols-1 gap-4 [grid-auto-flow:dense] sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[240px]"
       >
         {filtered.length ? (
           filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
