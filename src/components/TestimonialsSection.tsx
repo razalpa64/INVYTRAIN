@@ -29,17 +29,17 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
         style={{ background: "linear-gradient(90deg, transparent, var(--gold), var(--purple), transparent)" }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 pb-0 pt-24 md:px-10 md:pt-32">
+      <div className="relative mx-auto max-w-[1400px] px-5 pb-0 pt-16 md:px-10 md:pt-32">
         {/* Header */}
-        <div className="mb-16 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
           <div>
             <Reveal>
-              <p className="eyebrow mb-5">Client reviews</p>
+              <p className="eyebrow mb-4">Client reviews</p>
             </Reveal>
             <Reveal delay={80}>
               <h2
                 className="font-serif leading-[0.9]"
-                style={{ fontSize: "clamp(3rem, 7vw, 6rem)", color: "var(--ink)" }}
+                style={{ fontSize: "clamp(2.4rem, 7vw, 6rem)", color: "var(--ink)" }}
               >
                 Kind words.<br />
                 <span style={{ color: "var(--gold)" }}>Real outcomes.</span>
@@ -48,7 +48,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
           </div>
           <Reveal delay={150}>
             <div
-              className="rounded-2xl p-6 text-right"
+              className="rounded-2xl p-5 md:p-6 md:text-right"
               style={{
                 background: "rgba(212,168,83,0.06)",
                 border: "1px solid rgba(212,168,83,0.2)",
@@ -77,7 +77,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
             {all.map((review, i) => (
               <figure
                 key={`r1-${review.id}-${i}`}
-                className="group flex w-[340px] flex-shrink-0 flex-col rounded-2xl p-7"
+                className="group flex w-[280px] sm:w-[340px] flex-shrink-0 flex-col rounded-2xl p-5 sm:p-7"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid var(--line)",
@@ -110,7 +110,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
               {[...all].reverse().map((review, i) => (
                 <figure
                   key={`r2-${review.id}-${i}`}
-                  className="group flex w-[340px] flex-shrink-0 flex-col rounded-2xl p-7"
+                  className="group flex w-[280px] sm:w-[340px] flex-shrink-0 flex-col rounded-2xl p-5 sm:p-7"
                   style={{
                     background: "rgba(123,94,167,0.04)",
                     border: "1px solid rgba(123,94,167,0.12)",
@@ -138,9 +138,9 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
       </div>
 
       {/* Review form */}
-      <div className="mx-auto max-w-[1400px] px-6 pb-24 md:px-10">
+      <div className="mx-auto max-w-[1400px] px-5 pb-20 md:px-10 md:pb-28">
         <div
-          className="rounded-2xl p-8 md:p-12"
+          className="rounded-2xl p-6 md:p-10"
           style={{
             background: "rgba(255,255,255,0.02)",
             border: "1px solid var(--line-strong)",
