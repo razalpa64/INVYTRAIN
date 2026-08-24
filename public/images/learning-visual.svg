@@ -1,0 +1,7 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="900" fill="#E8EEE6"/><circle cx="165" cy="148" r="260" fill="#91A98D"/><circle cx="1015" cy="745" r="365" fill="#D6C08A"/>
+<rect x="190" y="166" width="440" height="566" rx="220" fill="#1B3028"/><rect x="570" y="242" width="394" height="390" rx="18" fill="#F8F5EC"/>
+<path d="M618 344C688 302 749 313 807 352C850 380 883 373 918 351V535H618V344Z" fill="#91A98D"/><path d="M618 407C690 365 747 385 804 414C853 438 889 430 918 410" stroke="#1B3028" stroke-width="12"/>
+<circle cx="410" cy="402" r="113" stroke="#E8EEE6" stroke-width="2"/><path d="M410 309V496M316 402H504" stroke="#E8EEE6" stroke-width="2"/>
+<text x="714" y="169" fill="#1B3028" font-family="serif" font-size="65" letter-spacing="9">GROW</text><text x="714" y="732" fill="#1B3028" font-family="sans-serif" font-size="20" letter-spacing="7">INVYTRA LEARNING</text>
+</svg>

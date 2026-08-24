@@ -1,0 +1,273 @@
+{
+  "siteConfig": {
+    "brand": {
+      "name": "INVYTRA",
+      "tagline": "Ideas today. Impact tomorrow.",
+      "philosophy": "Precision • Craft • Connection"
+    },
+    "hero": {
+      "eyebrow": "THE INVYTRA ECOSYSTEM",
+      "titleLines": ["One vision.", "Three worlds."],
+      "description": "A growing ecosystem creating high-impact solutions across software development, personalized learning, and digital celebrations.",
+      "primaryCTA": "Explore Invytra",
+      "secondaryCTA": "Our Story"
+    },
+    "whatsapp": {
+      "number": "918606159002",
+      "messages": {
+        "project": "Hello Invytra Project, I am interested in a college project / software solution.",
+        "learning": "Hello Invytra Learning, I would like to know more about tutoring.",
+        "event": "Hello Invytra Event, I am interested in a digital invitation."
+      }
+    },
+    "contact": {
+      "email": "hello@invytra.com",
+      "phone": "+91 86061 59002",
+      "instagram": "https://instagram.com/invytra"
+    },
+    "settings": {
+      "showFeatured": true,
+      "showTestimonials": true,
+      "showStats": true
+    }
+  },
+  "about": {
+    "eyebrow": "OUR CORE CONVICTION",
+    "title": "Depth Over Distraction.",
+    "lines": [
+      "Invytra was founded on a single principle — specialized ambitions deserve dedicated craftsmanship.",
+      "Rather than acting as a generic agency, we operate three distinct divisions focused on software execution, 1:1 mentorship, and digital celebrations."
+    ]
+  },
+  "bridge": {
+    "eyebrow": "THREE DIVISIONS • ONE STANDARD",
+    "items": [
+      {
+        "label": "LEARN",
+        "sub": "Invytra Learning",
+        "color": "text-navy",
+        "href": "/learning"
+      },
+      {
+        "label": "CREATE",
+        "sub": "Invytra Project",
+        "color": "text-ink",
+        "href": "/project"
+      },
+      {
+        "label": "CELEBRATE",
+        "sub": "Invytra Event",
+        "color": "text-gold",
+        "href": "/event"
+      }
+    ]
+  },
+  "principles": {
+    "title": "Engineering & Craft Standards",
+    "items": [
+      {
+        "n": "01",
+        "title": "Zero-Filler Execution",
+        "body": "No pre-made templates or inflated claims. Every piece of code, lesson, and design is crafted specifically for your goals."
+      },
+      {
+        "n": "02",
+        "title": "1:1 Direct Guidance",
+        "body": "Work directly with experts who understand your exact problem — whether debugging an algorithm or mastering a complex syllabus."
+      },
+      {
+        "n": "03",
+        "title": "Cinematic Presentation",
+        "body": "Subtle animations, high-contrast typography, and intuitive interfaces that turn ordinary projects into memorable experiences."
+      },
+      {
+        "n": "04",
+        "title": "Complete Ownership",
+        "body": "Full source code, production documentation, hosted RSVP dashboards, and lifetime access — zero hidden lock-ins."
+      }
+    ]
+  },
+  "finalCta": {
+    "titleLines": ["Ready to build", "something extraordinary?"],
+    "description": "Tell us about your college project, academic goals, or upcoming wedding. We'll respond within 2 hours.",
+    "button": "Get In Touch",
+    "brand": "INVYTRA"
+  },
+  "ventures": [
+    {
+      "id": 1,
+      "slug": "project",
+      "number": "01",
+      "name": "INVYTRA PROJECT",
+      "label": "FULL-STACK SOFTWARE & ACADEMIC LAB",
+      "theme": "project",
+      "heroImage": "/images/project-photo.jpg",
+      "description": "Turning complex software ideas and college capstones into robust, production-grade applications with full documentation.",
+      "headline": ["BESPOKE SOFTWARE.", "ACADEMIC PRECISION."],
+      "features": [
+        "Full-Stack Web & Mobile Apps",
+        "AI / ML & Computer Vision",
+        "IEEE & College Capstone Projects",
+        "System Architecture & DB Design",
+        "Panel-Ready Documentation",
+        "Viva & Presentation Coaching"
+      ],
+      "cta": "Explore Project Division",
+      "link": "/project",
+      "active": true,
+      "sortOrder": 1
+    },
+    {
+      "id": 2,
+      "slug": "learning",
+      "number": "02",
+      "name": "INVYTRA LEARNING",
+      "label": "1:1 PERSONALIZED ACADEMIC MENTORSHIP",
+      "theme": "learning",
+      "heroImage": "/images/learning-photo.jpg",
+      "description": "Focused 1-on-1 tutoring tailored to individual learning speeds, building deep mastery in core STEM & language subjects.",
+      "headline": ["PERSONALIZED TUTORING.", "MEASURABLE GROWTH."],
+      "features": [
+        "1 : 1 Private Mentorship",
+        "STEM & Core Computer Science",
+        "Custom Study Roadmaps",
+        "Continuous Progress Audits",
+        "Exam & Competitive Prep",
+        "Flexible Online Sessions"
+      ],
+      "cta": "Explore Learning Division",
+      "link": "/learning",
+      "active": true,
+      "sortOrder": 2
+    },
+    {
+      "id": 3,
+      "slug": "event",
+      "number": "03",
+      "name": "INVYTRA EVENT",
+      "label": "HIGH-END DIGITAL WEDDING & EVENT HUB",
+      "theme": "event",
+      "heroImage": "/images/event-photo.jpg",
+      "description": "Cinematic event websites, custom digital invitations, real-time guest RSVP tracking, and interactive photo galleries.",
+      "headline": ["CINEMATIC INVITATIONS.", "SEAMLESS RSVPs."],
+      "features": [
+        "Custom Wedding Websites",
+        "Interactive RSVP & Guest Lists",
+        "Itinerary & Venue Maps",
+        "High-Res Photo & Video Gallery",
+        "Live Countdown Timers",
+        "WhatsApp & Email Sharing"
+      ],
+      "cta": "Explore Event Division",
+      "link": "/event",
+      "active": true,
+      "sortOrder": 3
+    }
+  ],
+  "offerings": [
+    {
+      "id": 1,
+      "venture": "project",
+      "title": "Smart Attendance & Facial Recognition System",
+      "category": "Software Architecture",
+      "description": "Real-time biometric recognition pipeline paired with an analytics dashboard, exportable reports, and student portal.",
+      "image": "/images/project-photo.jpg",
+      "price": "₹2,999",
+      "oldPrice": "₹4,999",
+      "discount": "40% OFF",
+      "badge": "MOST POPULAR",
+      "cta": "Inspect Solution",
+      "link": "/project",
+      "featured": true,
+      "gallerySize": "large",
+      "active": true,
+      "sortOrder": 1
+    },
+    {
+      "id": 2,
+      "venture": "learning",
+      "title": "1:1 Intensive STEM & Coding Mentorship",
+      "category": "Private Mentorship",
+      "description": "Dedicated weekly sessions with personalized problem sets, direct chat support, and milestone assessments.",
+      "image": "/images/learning-photo.jpg",
+      "price": "₹1,499 / mo",
+      "oldPrice": null,
+      "discount": null,
+      "badge": "LIMITED SLOTS",
+      "cta": "Book Mentorship",
+      "link": "/learning",
+      "featured": true,
+      "gallerySize": "small",
+      "active": true,
+      "sortOrder": 2
+    },
+    {
+      "id": 3,
+      "venture": "event",
+      "title": "Cinematic Wedding Experience & Guest Hub",
+      "category": "Bespoke Invitation",
+      "description": "Interactive digital invite featuring music playback, event schedule, venue GPS integration, and automated RSVP logs.",
+      "image": "/images/event-photo.jpg",
+      "price": "₹1,999",
+      "oldPrice": null,
+      "discount": null,
+      "badge": "FEATURED CRAFT",
+      "cta": "Preview Invitation",
+      "link": "/event",
+      "featured": true,
+      "gallerySize": "vertical",
+      "active": true,
+      "sortOrder": 3
+    },
+    {
+      "id": 4,
+      "venture": "project",
+      "title": "Custom SaaS MVP & Capstone Architecture",
+      "category": "Software Engineering",
+      "description": "Production-grade Next.js, Node.js & PostgreSQL stack with full system documentation and viva presentation slides.",
+      "image": "/images/project-photo.jpg",
+      "price": "₹4,499",
+      "oldPrice": "₹6,999",
+      "discount": "35% OFF",
+      "badge": "PANEL APPROVED",
+      "cta": "Explore Architecture",
+      "link": "/project",
+      "featured": true,
+      "gallerySize": "small",
+      "active": true,
+      "sortOrder": 4
+    }
+  ],
+  "stats": [
+    { "id": 1, "value": "120+", "label": "Full-Stack Projects Shipped", "active": true, "sortOrder": 1 },
+    { "id": 2, "value": "98%", "label": "Student Score Improvement", "active": true, "sortOrder": 2 },
+    { "id": 3, "value": "150+", "label": "Weddings & Galas Celebrated", "active": true, "sortOrder": 3 },
+    { "id": 4, "value": "24/7", "label": "Direct Founder Support", "active": true, "sortOrder": 4 }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "quote": "Invytra delivered our computer vision project with flawless code, actual architecture diagrams, and a report that got us top marks from the external examiner.",
+      "name": "Aditya R.",
+      "category": "Project Division Client",
+      "active": true,
+      "sortOrder": 1
+    },
+    {
+      "id": 2,
+      "quote": "Having a dedicated tutor who understood exactly where I was getting stuck changed everything. My confidence in Data Structures doubled in three weeks.",
+      "name": "Meera K.",
+      "category": "Learning Student",
+      "active": true,
+      "sortOrder": 2
+    },
+    {
+      "id": 3,
+      "quote": "Our guests loved the wedding website! Collecting RSVPs and dietary preferences was effortless, and the design felt like a luxury magazine.",
+      "name": "Rohan & Ananya",
+      "category": "Event Division Couple",
+      "active": true,
+      "sortOrder": 3
+    }
+  ]
+}
