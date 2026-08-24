@@ -34,31 +34,19 @@ export const metadata: Metadata = {
       "Invytra is a growing venture connecting education, technology and unforgettable experiences.",
     siteName: "Invytra",
     type: "website",
-    images: ["/images/project-visual.svg"],
+    images: ["/images/project-photo.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "INVYTRA — Learn. Create. Celebrate.",
     description: "Ideas today. Impact tomorrow.",
-    images: ["/images/project-visual.svg"],
+    images: ["/images/project-photo.jpg"],
   },
 };
-
-// Dark is now the default. We only apply the .light class when user picked light.
-const THEME_SCRIPT = `
-try {
-  var stored = window.localStorage.getItem('invytra-theme');
-  if (stored === 'light') document.documentElement.classList.add('light');
-} catch (e) {}
-`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
-      <head>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-      </head>
       <body className="bg-bg text-ink antialiased" suppressHydrationWarning>
         <SmoothScrollProvider>
           <IntroLoader />

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
   { href: "/#about", label: "About" },
@@ -35,9 +34,8 @@ export default function Nav({ brandName }: { brandName: string }) {
         className="fixed inset-x-0 top-0 z-[900] transition-all duration-500"
         style={{
           padding: scrolled ? "12px 0" : "20px 0",
-          // Glassmorphism: only activates after scroll
           background: scrolled
-            ? "rgba(255, 253, 248, 0.75)"
+            ? "rgba(255, 253, 248, 0.85)"
             : "transparent",
           backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
@@ -93,7 +91,6 @@ export default function Nav({ brandName }: { brandName: string }) {
 
           {/* Desktop right */}
           <div className="hidden items-center gap-5 md:flex">
-            <ThemeToggle />
             <Link
               href="/#contact"
               data-cursor="ENTER"
@@ -105,7 +102,6 @@ export default function Nav({ brandName }: { brandName: string }) {
 
           {/* Mobile burger */}
           <div className="flex items-center gap-4 md:hidden">
-            <ThemeToggle />
             <button
               type="button"
               aria-label="Toggle menu"
