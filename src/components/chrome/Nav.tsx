@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
@@ -33,14 +34,14 @@ export default function Nav({ brandName }: { brandName: string }) {
       <header
         className="fixed inset-x-0 top-0 z-[900] transition-all duration-500"
         style={{
-          padding: scrolled ? "12px 0" : "24px 0",
+          padding: scrolled ? "12px 0" : "20px 0",
           // Glassmorphism: only activates after scroll
           background: scrolled
-            ? "rgba(255, 253, 248, 0.60)"
+            ? "rgba(255, 253, 248, 0.75)"
             : "transparent",
           backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(184, 137, 62, 0.12)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(184, 137, 62, 0.15)" : "none",
           boxShadow: scrolled
             ? "0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"
             : "none",
@@ -48,14 +49,25 @@ export default function Nav({ brandName }: { brandName: string }) {
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
 
-          {/* Brand wordmark */}
+          {/* Brand Logo & Wordmark */}
           <Link
             href="/"
             data-cursor="HOME"
-            className="relative font-serif text-2xl font-bold tracking-[0.22em]"
+            className="group relative flex items-center gap-3 font-serif text-2xl font-bold tracking-[0.22em]"
             style={{ color: "var(--ink)" }}
           >
-            INVYTRA
+            {/* Logo Emblem */}
+            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[rgba(184,137,62,0.3)] shadow-sm bg-white/90 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/logo.jpg"
+                alt="INVYTRA Logo"
+                fill
+                sizes="40px"
+                className="object-contain p-0.5"
+                priority
+              />
+            </div>
+            <span>{brandName || "INVYTRA"}</span>
           </Link>
 
           {/* Desktop nav links */}
