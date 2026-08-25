@@ -33,7 +33,7 @@ export default function ServicesOverview() {
             const accent = SERVICE_ACCENTS[venture.slug] ?? SERVICE_ACCENTS.event;
             return (
               <article key={venture.slug} className="group flex h-full flex-col overflow-hidden rounded-2xl border" style={{ background: "var(--surface)", borderColor: "var(--line-strong)" }}>
-                <div className="relative aspect-[16/8] overflow-hidden" style={{ background: accent.wash }}>
+                <div className="relative aspect-[16/8] overflow-hidden" data-parallax="18" style={{ background: accent.wash }}>
                   {venture.heroImage ? (
                     <Image src={venture.heroImage} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   ) : null}

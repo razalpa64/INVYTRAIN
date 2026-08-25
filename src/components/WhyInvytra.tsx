@@ -25,7 +25,7 @@ export default function WhyInvytra() {
               </h2>
             </Reveal>
           </div>
-          <div className="relative hidden min-h-44 overflow-hidden rounded-2xl md:col-span-3 md:col-start-7 md:block">
+          <div className="relative hidden min-h-44 overflow-hidden rounded-2xl md:col-span-3 md:col-start-7 md:block" data-parallax="16">
             <Image src="/images/project-visual.svg" alt="" fill sizes="25vw" className="object-cover" />
           </div>
           <div className="md:col-span-3 md:col-start-10">

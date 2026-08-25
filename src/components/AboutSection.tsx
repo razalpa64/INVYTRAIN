@@ -33,7 +33,7 @@ export default function AboutSection() {
             </Reveal>
           </div>
 
-          <div className="relative min-h-40 overflow-hidden rounded-2xl lg:col-span-3">
+          <div className="relative min-h-40 overflow-hidden rounded-2xl lg:col-span-3" data-parallax="20">
             <Image src="/images/event-photo.jpg" alt="" fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover" />
           </div>
 

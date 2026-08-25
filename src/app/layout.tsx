@@ -5,6 +5,8 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/chrome/SmoothScrollProvider";
 import CustomCursor from "@/components/chrome/CustomCursor";
 import ScrollProgress from "@/components/chrome/ScrollProgress";
+import ScrollEffects from "@/components/chrome/ScrollEffects";
+import BackToTop from "@/components/chrome/BackToTop";
 import IntroLoader from "@/components/IntroLoader";
 
 const cormorant = Cormorant_Garamond({
@@ -51,6 +53,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SmoothScrollProvider>
           <IntroLoader />
           <ScrollProgress />
+          <ScrollEffects />
+          <BackToTop />
           <CustomCursor />
           {children}
         </SmoothScrollProvider>

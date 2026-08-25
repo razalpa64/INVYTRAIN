@@ -11,7 +11,7 @@ export default function FinalCTA() {
       className="relative flex min-h-[85svh] flex-col items-center justify-center overflow-hidden border-t px-6 text-center"
       style={{ background: "var(--bg)", borderColor: "var(--line)" }}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.14]" data-parallax="12">
         <Image src="/images/event-photo.jpg" alt="" fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: "var(--bg)", opacity: 0.78 }} />
       </div>
