@@ -1,4 +1,5 @@
 import Reveal from "./motion/Reveal";
+import Image from "next/image";
 import type { Testimonial } from "@/lib/types";
 import ReviewForm from "./ReviewForm";
 
@@ -30,6 +31,9 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
       />
 
       <div className="relative mx-auto max-w-[1400px] px-5 pb-0 pt-16 md:px-10 md:pt-32">
+        <div className="pointer-events-none absolute right-10 top-20 hidden h-24 w-36 overflow-hidden rounded-xl opacity-80 md:block">
+          <Image src="/images/event-visual.svg" alt="" fill sizes="144px" className="object-cover" />
+        </div>
         {/* Header */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
           <div>

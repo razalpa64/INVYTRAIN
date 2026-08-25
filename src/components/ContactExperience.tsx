@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Reveal from "./motion/Reveal";
+import Image from "next/image";
 import { buildWhatsappLink } from "@/lib/whatsapp";
 import type { SiteConfigData, VentureSlug } from "@/lib/types";
 
@@ -99,7 +100,10 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
               </h2>
             </Reveal>
           </div>
-          <div className="md:col-span-5 md:col-start-8 md:flex md:items-end">
+          <div className="relative hidden min-h-44 overflow-hidden rounded-2xl md:col-span-3 md:col-start-6 md:block">
+            <Image src="/images/learning-visual.svg" alt="" fill sizes="25vw" className="object-cover" />
+          </div>
+          <div className="md:col-span-4 md:col-start-9 md:flex md:items-end">
             <Reveal delay={150}>
               <p className="text-sm leading-[1.8] font-medium" style={{ color: "var(--ink-muted)" }}>
                 Select what you need below to customize your message. We reply on WhatsApp within hours.

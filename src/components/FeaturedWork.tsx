@@ -16,20 +16,32 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   }, [items, tab]);
 
   return (
-    <section id="work" className="relative mx-auto max-w-[1400px] px-4 py-20 md:px-10 md:py-36">
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-10 md:mb-14">
-        <div>
+    <section id="work" className="relative overflow-hidden border-y" style={{ background: "var(--bg)", borderColor: "var(--line)" }}>
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-10 md:py-24">
+        <div className="mb-10 grid gap-8 md:grid-cols-12 md:items-end md:mb-12">
+          <div className="md:col-span-7">
           <Reveal>
-            <p className="eyebrow mb-4">Selected Work</p>
+            <div className="mb-5 flex items-center gap-4">
+              <span className="font-serif text-2xl font-bold" style={{ color: "var(--gold)" }}>04</span>
+              <p className="eyebrow">Selected Work</p>
+            </div>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="font-serif text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl" style={{ color: "var(--ink)" }}>
-              Crafted by Invytra
+            <h2 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
+              Work with<br /><span style={{ color: "var(--gold)" }}>a point of view.</span>
             </h2>
           </Reveal>
+          </div>
+          <Reveal delay={140}>
+            <p className="max-w-sm text-sm font-medium leading-[1.8] md:col-span-4 md:col-start-9">
+              A selection of software, learning experiences, and celebrations shaped with clarity, care, and a little uncommon sense.
+            </p>
+          </Reveal>
         </div>
-        <Reveal delay={140}>
-          <div className="flex flex-wrap gap-2.5">
+
+        <Reveal delay={180}>
+          <div className="mb-8 flex flex-wrap items-center gap-2 border-y py-3" style={{ borderColor: "var(--line-strong)" }}>
+            <span className="mr-3 text-[10px] font-extrabold uppercase tracking-[0.2em]" style={{ color: "var(--ink-faint)" }}>Filter by</span>
             {TABS.map((t) => {
               const active = tab === t;
               return (
@@ -37,7 +49,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
                   key={t}
                   type="button"
                   onClick={() => setTab(t)}
-                  className="rounded-full px-5 py-2.5 text-[10px] font-extrabold uppercase tracking-[0.2em] transition-all duration-300"
+                  className="rounded-full px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.2em] transition-all duration-300"
                   style={{
                     background: active ? "var(--ink)" : "var(--surface)",
                     color: active ? "var(--bg)" : "var(--ink)",
@@ -50,7 +62,6 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
             })}
           </div>
         </Reveal>
-      </div>
 
       <div
         key={tab}
@@ -63,6 +74,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
             More work coming soon.
           </p>
         )}
+      </div>
       </div>
     </section>
   );

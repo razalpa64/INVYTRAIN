@@ -13,10 +13,11 @@ export default function SmoothScrollProvider({ children }: { children: ReactNode
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.3,
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.1,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.05,
+      syncTouch: true,
     });
 
     lenis.on("scroll", ScrollTrigger.update);

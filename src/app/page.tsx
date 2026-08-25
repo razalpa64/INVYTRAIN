@@ -1,33 +1,26 @@
 import Nav from "@/components/chrome/Nav";
 import Hero from "@/components/Hero";
-import WhatIsInvytra from "@/components/WhatIsInvytra";
 import LearnCreateCelebrate from "@/components/LearnCreateCelebrate";
-import VentureChapter from "@/components/VentureChapter";
+import ServicesOverview from "@/components/ServicesOverview";
+import AboutSection from "@/components/AboutSection";
 import FeaturedWork from "@/components/FeaturedWork";
-import LiveContent from "@/components/LiveContent";
 import StatsSection from "@/components/StatsSection";
 import WhyInvytra from "@/components/WhyInvytra";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactExperience from "@/components/ContactExperience";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import OurSites from "@/components/OurSites";
-import { getFeaturedWork, getOfferings, getSiteConfig, getStats, getTestimonials, getVentures } from "@/lib/data";
+import { getFeaturedWork, getSiteConfig, getStats, getTestimonials } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [config, ventures, offerings, featured, stats, testimonials] = await Promise.all([
+  const [config, featured, stats, testimonials] = await Promise.all([
     getSiteConfig(),
-    getVentures(),
-    getOfferings(),
     getFeaturedWork(),
     getStats(),
     getTestimonials(),
   ]);
-
-  const previewFor = (slug: string) =>
-    offerings.find((o) => o.venture === slug && o.featured) ?? offerings.find((o) => o.venture === slug);
 
   return (
     <>
@@ -40,18 +33,10 @@ export default async function HomePage() {
           primaryCTA={config.hero.primaryCTA}
           secondaryCTA={config.hero.secondaryCTA}
         />
-        <WhatIsInvytra />
         <LearnCreateCelebrate />
-
-        <div id="ventures">
-          {ventures.map((venture, i) => (
-            <VentureChapter key={venture.id} venture={venture} preview={previewFor(venture.slug)} index={i} />
-          ))}
-        </div>
+        <ServicesOverview />
 
         {config.settings.showFeatured ? <FeaturedWork items={featured} /> : null}
-
-        <LiveContent items={offerings} />
 
         {config.settings.showStats ? <StatsSection stats={stats} /> : null}
 
@@ -59,9 +44,9 @@ export default async function HomePage() {
 
         {config.settings.showTestimonials ? <TestimonialsSection testimonials={testimonials} /> : null}
 
-        <OurSites ventures={ventures} />
-
         <ContactExperience config={config} />
+
+        <AboutSection />
 
         <FinalCTA />
       </main>

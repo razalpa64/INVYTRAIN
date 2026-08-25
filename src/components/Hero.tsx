@@ -97,13 +97,13 @@ export default function Hero({
         {/* CTA Buttons */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
           <Link
-            href="#our-sites"
+            href="#services"
             className="btn-shimmer px-9 py-4.5 text-[11px] font-bold tracking-[0.22em]"
           >
             {primaryCTA} &nbsp;↗
           </Link>
           <Link
-            href="#about"
+            href="#work"
             className="cta-link text-[11px] font-bold uppercase tracking-[0.22em] px-4 py-2"
             style={{ color: "var(--ink)" }}
           >

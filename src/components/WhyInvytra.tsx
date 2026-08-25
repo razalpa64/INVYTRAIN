@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "./motion/Reveal";
+import Image from "next/image";
 import { siteContent } from "@/lib/content";
 
 export default function WhyInvytra() {
@@ -24,7 +25,10 @@ export default function WhyInvytra() {
               </h2>
             </Reveal>
           </div>
-          <div className="md:col-span-5 md:col-start-8">
+          <div className="relative hidden min-h-44 overflow-hidden rounded-2xl md:col-span-3 md:col-start-7 md:block">
+            <Image src="/images/project-visual.svg" alt="" fill sizes="25vw" className="object-cover" />
+          </div>
+          <div className="md:col-span-3 md:col-start-10">
             <Reveal delay={150}>
               <p className="text-sm leading-[1.8] font-medium" style={{ color: "var(--ink-muted)" }}>
                 Every venture we build stands on these non-negotiable principles of craft and integrity.

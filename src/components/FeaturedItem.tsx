@@ -17,7 +17,7 @@ export default function FeaturedItem({ offering, index }: { offering: Offering; 
     <Reveal className={`group relative overflow-hidden rounded-2xl ${sizeClass}`} delay={index * 90}>
       <Link
         href={offering.link ?? "#"}
-        className="block h-full w-full overflow-hidden rounded-2xl"
+        className="relative block h-full w-full overflow-hidden rounded-2xl"
         style={{
           border: "1px solid var(--line-strong)",
           background: "var(--surface)",
@@ -52,6 +52,9 @@ export default function FeaturedItem({ offering, index }: { offering: Offering; 
         />
 
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6 md:p-8">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/65">
+            {offering.venture === "project" ? "Invytra Project" : offering.venture === "learning" ? "Invytra Learning" : "Invytra Event"}
+          </p>
           <p
             className="text-[9px] font-extrabold uppercase tracking-[0.25em] text-[#E4BA65]"
           >
@@ -61,7 +64,7 @@ export default function FeaturedItem({ offering, index }: { offering: Offering; 
             {offering.title}
           </h3>
           <div className="mt-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#E4BA65]">
-            <span>Explore</span>
+            <span>{offering.cta ?? "Explore"}</span>
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </div>
         </div>

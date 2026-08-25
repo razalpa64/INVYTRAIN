@@ -15,7 +15,7 @@ export const DEFAULT_SITE_CONFIG: SiteConfigData = {
     description:
       "A growing venture creating meaningful experiences across education, technology and celebrations.",
     primaryCTA: "Explore Invytra",
-    secondaryCTA: "Our Story",
+    secondaryCTA: "See Our Work",
   },
   whatsapp: {
     number: "918606159002",

@@ -1,10 +1,14 @@
 import Reveal from "./motion/Reveal";
 import Counter from "./motion/Counter";
+import Image from "next/image";
 import type { Stat } from "@/lib/types";
 
 export default function StatsSection({ stats }: { stats: Stat[] }) {
   return (
     <section className="relative overflow-hidden border-t border-b" style={{ borderColor: "var(--line)", background: "var(--surface)" }}>
+      <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
+        <Image src="/images/project-photo.jpg" alt="" fill sizes="100vw" className="object-cover" />
+      </div>
       <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-10 md:py-28">
         <Reveal>
           <p className="eyebrow mb-12 text-center">By the numbers</p>

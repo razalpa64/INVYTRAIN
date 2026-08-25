@@ -15,7 +15,7 @@ const FOOTER_LINKS = [
   {
     heading: "Navigate",
     items: [
-      { label: "About", href: "/#about" },
+      { label: "Services", href: "/#services" },
       { label: "Work", href: "/#work" },
       { label: "Reviews", href: "/#reviews" },
       { label: "Contact", href: "/#contact" },

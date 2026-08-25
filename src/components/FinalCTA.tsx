@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "./motion/Reveal";
 import { siteContent } from "@/lib/content";
 
@@ -10,6 +11,10 @@ export default function FinalCTA() {
       className="relative flex min-h-[85svh] flex-col items-center justify-center overflow-hidden border-t px-6 text-center"
       style={{ background: "var(--bg)", borderColor: "var(--line)" }}
     >
+      <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
+        <Image src="/images/event-photo.jpg" alt="" fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0" style={{ background: "var(--bg)", opacity: 0.78 }} />
+      </div>
       <div className="relative z-10 flex max-w-4xl flex-col items-center">
         <Reveal>
           <p className="eyebrow mb-6">The Next Step</p>
@@ -51,7 +56,7 @@ export default function FinalCTA() {
               {siteContent.finalCta.button} →
             </Link>
             <Link
-              href="#our-sites"
+              href="#services"
               className="btn-outline-gold px-8 py-4 text-[11px] font-bold tracking-[0.18em]"
             >
               Explore Brands

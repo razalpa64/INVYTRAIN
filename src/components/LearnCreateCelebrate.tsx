@@ -59,6 +59,7 @@ export default function LearnCreateCelebrate() {
               src={c.image}
               alt={c.word}
               fill
+              priority={i === 0}
               sizes="100vw"
               className="object-cover"
             />
