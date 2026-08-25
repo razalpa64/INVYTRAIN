@@ -11,8 +11,12 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   const [tab, setTab] = useState<(typeof TABS)[number]>("ALL");
 
   const filtered = useMemo(() => {
-    if (tab === "ALL") return items;
-    return items.filter((item) => item.venture === tab.toLowerCase());
+    const visibleItems = tab === "ALL" ? items : items.filter((item) => item.venture === tab.toLowerCase());
+    const roleOrder: Record<string, number> = { large: 0, small: 1, wide: 1, vertical: 2 };
+    return [...visibleItems].sort((a, b) => {
+      const roleDifference = (roleOrder[a.gallerySize ?? "small"] ?? 1) - (roleOrder[b.gallerySize ?? "small"] ?? 1);
+      return roleDifference || a.sortOrder - b.sortOrder;
+    });
   }, [items, tab]);
 
   return (
@@ -64,10 +68,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
           </div>
         </Reveal>
 
-      <div
-        key={tab}
-        className="grid grid-cols-1 gap-4 [grid-auto-flow:dense] sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[240px]"
-      >
+      <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[240px]">
         {filtered.length ? (
           filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
         ) : (
