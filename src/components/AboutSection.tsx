@@ -31,6 +31,23 @@ export default function AboutSection() {
                 </p>
               </div>
             </Reveal>
+
+            <Reveal delay={300}>
+              <div className="mt-10 border-t pt-5" style={{ borderColor: "var(--line-strong)" }}>
+                <p className="eyebrow mb-4">Three divisions. One standard.</p>
+                <div className="grid gap-0">
+                  {siteContent.bridge.items.map((item, index) => (
+                    <div key={item.label} className="flex items-center justify-between border-b py-3" style={{ borderColor: "var(--line)" }}>
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-serif text-lg font-bold" style={{ color: PRINCIPLE_ACCENTS[index] }}>{item.label}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: "var(--ink-muted)" }}>{item.sub}</span>
+                      </div>
+                      <span className="text-xs" style={{ color: PRINCIPLE_ACCENTS[index] }}>↗</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </div>
 
           <div>
@@ -40,10 +57,10 @@ export default function AboutSection() {
               </p>
             </Reveal>
             <div className="mt-10 grid gap-0 border-t" style={{ borderColor: "var(--line-strong)" }}>
-              {siteContent.principles.items.slice(0, 3).map((principle, index) => (
+              {siteContent.principles.items.map((principle, index) => (
                 <Reveal key={principle.n} delay={180 + index * 80}>
-                  <div className="grid gap-3 border-b py-6 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5" style={{ borderColor: "var(--line-strong)" }}>
-                    <span className="font-serif text-2xl font-bold" style={{ color: PRINCIPLE_ACCENTS[index] }}>{principle.n}</span>
+                  <div className="grid gap-3 border-b py-5 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5" style={{ borderColor: "var(--line-strong)" }}>
+                    <span className="font-serif text-2xl font-bold" style={{ color: PRINCIPLE_ACCENTS[index % PRINCIPLE_ACCENTS.length] }}>{principle.n}</span>
                     <div>
                       <h3 className="font-serif text-2xl font-bold leading-tight" style={{ color: "var(--ink)" }}>{principle.title}</h3>
                       <p className="mt-2 max-w-xl text-sm font-medium leading-[1.75]" style={{ color: "var(--ink-muted)" }}>{principle.body}</p>
