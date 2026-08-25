@@ -6,10 +6,10 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Invytra Project — Design. Develop. Deliver.",
   description:
-    "College projects, software development, academic solutions, documentation and digital products — built by Invytra Project.",
+    "Online academic software project support for college students, including final-year projects, mini projects, development, documentation, and guidance.",
   openGraph: {
     title: "Invytra Project — Design. Develop. Deliver.",
-    description: "Turning college ideas into meaningful software, digital products and academic experiences.",
+    description: "Build, understand, and complete academic software projects with professional development support.",
     images: ["/images/project-desk.jpg"],
   },
 };
