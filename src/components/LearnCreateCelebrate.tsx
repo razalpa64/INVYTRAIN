@@ -44,7 +44,7 @@ export default function LearnCreateCelebrate() {
   const ch = chapters[active] || chapters[0];
 
   return (
-    <section ref={sectionRef} className="h-[420vh] md:h-[350vh]">
+    <section ref={sectionRef} className="h-[300vh] md:h-[350vh]">
       <div className="sticky top-0 h-[100svh] min-h-[34rem] w-full overflow-hidden">
 
         {/* ── FULL-BLEED PHOTOS FROM site.json ── */}
