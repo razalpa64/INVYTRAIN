@@ -14,15 +14,15 @@ export default function LearnCreateCelebrate() {
   const chapters = [...siteContent.ventures]
     .sort((a, b) => chapterOrder.indexOf(a.slug) - chapterOrder.indexOf(b.slug))
     .map((v, index) => ({
-    number: String(index + 1).padStart(2, "0"),
-    word: v.slug === "learning" ? "LEARN" : v.slug === "project" ? "CREATE" : "CELEBRATE",
-    sub: v.name,
-    tagline: v.description,
-    href: v.link,
-    image: v.heroImage || `/images/${v.slug}-photo.jpg`,
-    overlay: v.slug === "learning" ? "rgba(15, 40, 30, 0.68)" : v.slug === "project" ? "rgba(45, 25, 8, 0.65)" : "rgba(50, 32, 5, 0.62)",
-    accent: v.slug === "learning" ? "#6DB89A" : v.slug === "project" ? "#E0A96D" : "#F0C87A",
-  }));
+      number: String(index + 1).padStart(2, "0"),
+      word: v.slug === "learning" ? "LEARN" : v.slug === "project" ? "CREATE" : "CELEBRATE",
+      sub: v.name,
+      tagline: v.description,
+      href: v.link,
+      image: v.heroImage || `/images/${v.slug}-photo.jpg`,
+      overlay: v.slug === "learning" ? "rgba(15, 40, 30, 0.68)" : v.slug === "project" ? "rgba(45, 25, 8, 0.65)" : "rgba(50, 32, 5, 0.62)",
+      accent: v.slug === "learning" ? "#6DB89A" : v.slug === "project" ? "#E0A96D" : "#F0C87A",
+    }));
 
   useEffect(() => {
     let raf = 0;

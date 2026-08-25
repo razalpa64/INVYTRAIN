@@ -38,7 +38,7 @@ export default function OurSites({ ventures }: { ventures: Venture[] }) {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {ventures.map((venture) => {
             const style = VENTURE_STYLES[venture.slug] ?? VENTURE_STYLES.event;
             return (

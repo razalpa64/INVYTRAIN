@@ -83,14 +83,14 @@ export default function FinalCTA() {
       </div>
 
       <div
-        className="pointer-events-none absolute bottom-8 left-8 text-[10px] font-bold uppercase tracking-[0.3em]"
+        className="pointer-events-none absolute bottom-8 left-8 hidden text-[10px] font-bold uppercase tracking-[0.3em] sm:block"
         style={{ color: "var(--ink-faint)" }}
         suppressHydrationWarning
       >
         ©{new Date().getFullYear()}
       </div>
       <div
-        className="pointer-events-none absolute bottom-8 right-8 text-[10px] font-bold uppercase tracking-[0.3em]"
+        className="pointer-events-none absolute bottom-8 right-8 hidden text-[10px] font-bold uppercase tracking-[0.3em] sm:block"
         style={{ color: "var(--ink-faint)" }}
       >
         invytra.com
