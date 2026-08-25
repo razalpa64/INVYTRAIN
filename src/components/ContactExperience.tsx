@@ -84,9 +84,9 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
       className="relative overflow-hidden border-t"
       style={{ borderColor: "var(--line)", background: "var(--bg)" }}
     >
-      <div className="relative mx-auto max-w-[1400px] px-5 py-20 sm:px-6 md:px-10 md:py-36">
-        <div className="mb-12 grid grid-cols-1 gap-8 md:mb-16 md:grid-cols-12">
-          <div className="md:col-span-6">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 grid grid-cols-1 gap-8 md:mb-12 md:grid-cols-12">
+          <div className="md:col-span-5">
             <Reveal>
               <p className="eyebrow mb-5">Let&apos;s talk</p>
             </Reveal>
@@ -100,10 +100,10 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
               </h2>
             </Reveal>
           </div>
-          <div className="relative hidden min-h-44 overflow-hidden rounded-2xl md:col-span-3 md:col-start-6 md:block">
+          <div className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl md:col-span-3 md:col-start-7 md:block">
             <Image src="/images/learning-visual.svg" alt="" fill sizes="25vw" className="object-cover" />
           </div>
-          <div className="md:col-span-4 md:col-start-9 md:flex md:items-end">
+          <div className="md:col-span-3 md:col-start-10 md:flex md:items-end">
             <Reveal delay={150}>
               <p className="text-sm leading-[1.8] font-medium" style={{ color: "var(--ink-muted)" }}>
                 Select what you need below to customize your message. We reply on WhatsApp within hours.
@@ -122,7 +122,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
                   type="button"
                   onClick={() => { setSelected(choice.key); setValues({}); }}
                   data-cursor="SELECT"
-                  className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300 sm:p-8"
+                  className="group relative flex min-h-40 w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-left transition-all duration-300 sm:p-8"
                   style={{
                     background: "var(--surface)",
                     border: `1px solid ${isSelected ? choice.accent : "var(--line-strong)"}`,

@@ -91,10 +91,10 @@ export default function Footer({ config }: { config: SiteConfigData }) {
               <a href={config.contact.instagram} target="_blank" rel="noreferrer" className="hover:text-[color:var(--gold)] transition-colors">
                 Instagram: @invytra
               </a>
-              <a href={`mailto:${config.contact.email}`} className="hover:text-[color:var(--gold)] transition-colors">
+              <a href={`mailto:${config.contact.email}`} className="break-words hover:text-[color:var(--gold)] transition-colors">
                 Email: {config.contact.email}
               </a>
-              <a href={`tel:${config.contact.phone.replace(/\s/g, "")}`} className="hover:text-[color:var(--gold)] transition-colors">
+              <a href={`tel:${config.contact.phone.replace(/\s/g, "")}`} className="break-words hover:text-[color:var(--gold)] transition-colors">
                 Phone: {config.contact.phone}
               </a>
             </div>

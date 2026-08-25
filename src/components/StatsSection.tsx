@@ -18,10 +18,7 @@ export default function StatsSection({ stats }: { stats: Stat[] }) {
           {stats.map((stat, i) => (
             <Reveal key={stat.id} delay={i * 100}>
               <div
-                className="group relative flex flex-col items-center justify-center p-8 text-center md:p-10"
-                style={{
-                  borderRight: i < stats.length - 1 ? "1px solid var(--line)" : "none",
-                }}
+                className={`group relative flex flex-col items-center justify-center p-8 text-center md:p-10 ${i < stats.length - 2 ? "border-b" : ""} ${i < stats.length - 1 ? "md:border-r" : ""}`}
               >
                 <Counter
                   value={stat.value}

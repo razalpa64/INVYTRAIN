@@ -69,7 +69,7 @@ export default function Hero({
 
         {/* Hero Title */}
         <h1
-          className="font-display font-serif text-[13vw] leading-[0.88] tracking-[-0.04em] sm:text-[6.5rem] md:text-[8rem] lg:text-[9.5rem]"
+          className="font-display font-serif text-[clamp(3.75rem,13vw,6.5rem)] leading-[0.88] tracking-[-0.04em] sm:text-[6.5rem] md:text-[8rem] lg:text-[9.5rem]"
           style={{ color: "var(--ink)" }}
         >
           {titleLines.map((line, i) => (

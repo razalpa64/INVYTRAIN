@@ -68,7 +68,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
           </div>
         </Reveal>
 
-      <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[240px]">
+      <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:auto-rows-[240px]">
         {filtered.length ? (
           filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
         ) : (

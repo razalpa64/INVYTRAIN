@@ -28,7 +28,7 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {siteContent.ventures.map((venture) => {
             const accent = SERVICE_ACCENTS[venture.slug] ?? SERVICE_ACCENTS.event;
             return (
