@@ -21,8 +21,8 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
 
   return (
     <section id="work" className="relative overflow-hidden border-y" style={{ background: "var(--bg)", borderColor: "var(--line)" }}>
-      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
-        <div className="mb-10 grid gap-7 md:mb-12 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.6fr)] md:items-end md:gap-12">
+      <div className="mx-auto max-w-[1400px] px-5 py-12 sm:px-6 md:px-10 md:py-16">
+        <div className="mb-8 grid gap-6 md:mb-9 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.6fr)] md:items-end md:gap-12">
           <div>
           <Reveal>
             <div className="mb-5 flex items-center gap-4">
@@ -31,7 +31,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
             </div>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="font-serif text-[clamp(2.75rem,10vw,4.5rem)] font-bold leading-[0.95] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
+            <h2 className="max-w-[18ch] font-serif text-[clamp(2.75rem,10vw,4.5rem)] font-bold leading-[0.92] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
               <span className="block">Work with</span>
               <span className="block" style={{ color: "var(--gold)" }}>a point of view.</span>
             </h2>
@@ -45,7 +45,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
         </div>
 
         <Reveal delay={180}>
-          <div className="mb-8 flex flex-wrap items-center gap-2 border-y py-3" style={{ borderColor: "var(--line-strong)" }}>
+          <div className="mb-6 flex flex-wrap items-center gap-2 border-y py-3" style={{ borderColor: "var(--line-strong)" }}>
             <span className="mr-3 text-[10px] font-extrabold uppercase tracking-[0.2em]" style={{ color: "var(--ink-faint)" }}>Filter by</span>
             {TABS.map((t) => {
               const active = tab === t;
