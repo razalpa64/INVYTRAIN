@@ -159,7 +159,7 @@
         "WhatsApp & Email Sharing"
       ],
       "cta": "Explore Event Division",
-      "link": "/event",
+      "link": "https://invytrareal.vercel.app/",
       "active": true,
       "sortOrder": 3
     }

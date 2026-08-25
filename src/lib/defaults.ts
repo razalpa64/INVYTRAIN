@@ -92,7 +92,7 @@ export const DEFAULT_VENTURES: Venture[] = [
     headline: ["YOUR MOMENT.", "REIMAGINED."],
     features: ["Wedding", "Save The Date", "RSVP", "Gallery", "Countdown", "Event Websites"],
     cta: "Explore Event",
-    link: "/event",
+    link: "https://invytrareal.vercel.app/",
     active: true,
     sortOrder: 3,
   },
