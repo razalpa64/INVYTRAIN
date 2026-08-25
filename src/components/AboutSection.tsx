@@ -1,5 +1,4 @@
 import Reveal from "./motion/Reveal";
-import Image from "next/image";
 import { siteContent } from "@/lib/content";
 
 const PRINCIPLE_ACCENTS = ["#A86835", "#3F7267", "#B8893E"];
@@ -8,7 +7,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="relative overflow-hidden border-t" style={{ background: "var(--bg-2)", borderColor: "var(--line)" }}>
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-6 md:px-10 md:py-32">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(220px,0.7fr)_minmax(0,1.35fr)] lg:items-start lg:gap-14 xl:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-24 xl:gap-32">
           <div>
             <Reveal>
               <p className="eyebrow mb-5">About Invytra</p>
@@ -32,10 +31,6 @@ export default function AboutSection() {
                 </p>
               </div>
             </Reveal>
-          </div>
-
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-[3/4]" data-parallax="20">
-            <Image src="/images/event-photo.jpg" alt="Invytra event experience" fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-cover" />
           </div>
 
           <div>
