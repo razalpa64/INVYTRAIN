@@ -52,7 +52,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
           </div>
           <Reveal delay={150}>
             <div
-              className="w-full max-w-[14rem] self-start rounded-2xl p-5 md:max-w-none md:self-auto md:p-6 md:text-right"
+              className="relative z-10 mt-3 w-full max-w-[14rem] self-start rounded-2xl p-5 md:mt-20 md:max-w-none md:self-auto md:p-6 md:text-right"
               style={{
                 background: "rgba(212,168,83,0.06)",
                 border: "1px solid rgba(212,168,83,0.2)",

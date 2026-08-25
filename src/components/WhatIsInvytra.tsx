@@ -115,8 +115,8 @@ export default function WhatIsInvytra() {
                 }}
               >
                 <RevealLines
-                  className="font-serif leading-[1.65] font-normal"
-                  style={{ fontSize: "clamp(1.4rem, 2.4vw, 2.1rem)", color: "var(--ink)" }}
+                  className="max-w-2xl font-serif leading-[1.5] font-normal"
+                  style={{ fontSize: "clamp(1.25rem, 2vw, 1.8rem)", color: "var(--ink)" }}
                   lines={siteContent.about.lines}
                 />
 

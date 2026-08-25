@@ -18,8 +18,8 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   return (
     <section id="work" className="relative overflow-hidden border-y" style={{ background: "var(--bg)", borderColor: "var(--line)" }}>
       <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
-        <div className="mb-10 grid gap-7 md:mb-12 md:grid-cols-12 md:items-end md:gap-8">
-          <div className="md:col-span-7">
+        <div className="mb-10 grid gap-7 md:mb-12 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.6fr)] md:items-end md:gap-12">
+          <div>
           <Reveal>
             <div className="mb-5 flex items-center gap-4">
               <span className="font-serif text-2xl font-bold" style={{ color: "var(--gold)" }}>04</span>
@@ -34,7 +34,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
           </Reveal>
           </div>
           <Reveal delay={140}>
-            <p className="max-w-sm text-sm font-medium leading-[1.8] md:col-span-4 md:col-start-9">
+            <p className="max-w-md text-sm font-medium leading-[1.8]">
               A selection of software, learning experiences, and celebrations shaped with clarity, care, and a little uncommon sense.
             </p>
           </Reveal>
