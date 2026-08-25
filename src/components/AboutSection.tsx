@@ -1,4 +1,5 @@
 import Reveal from "./motion/Reveal";
+import Image from "next/image";
 import { siteContent } from "@/lib/content";
 
 const PRINCIPLE_ACCENTS = ["#A86835", "#3F7267", "#B8893E"];
@@ -46,6 +47,22 @@ export default function AboutSection() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={380}>
+              <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-2xl border" style={{ borderColor: "var(--line-strong)", background: "var(--surface)" }}>
+                <Image
+                  src="/images/project-photo.jpg"
+                  alt="A carefully crafted Invytra project workspace"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 35vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+                <p className="absolute bottom-4 left-4 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white/85">
+                  Thoughtful work, made visible
+                </p>
               </div>
             </Reveal>
           </div>
