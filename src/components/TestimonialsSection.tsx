@@ -30,12 +30,12 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
         style={{ background: "linear-gradient(90deg, transparent, var(--gold), var(--purple), transparent)" }}
       />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 pb-0 pt-16 md:px-10 md:pt-32">
+      <div className="relative mx-auto max-w-[1400px] px-5 pb-0 pt-16 sm:px-6 md:px-10 md:pt-32">
         <div className="pointer-events-none absolute right-10 top-20 hidden h-24 w-36 overflow-hidden rounded-xl opacity-80 md:block">
           <Image src="/images/event-visual.svg" alt="" fill sizes="144px" className="object-cover" />
         </div>
         {/* Header */}
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
+        <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-8">
           <div>
             <Reveal>
               <p className="eyebrow mb-4">Client reviews</p>
@@ -43,16 +43,16 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
             <Reveal delay={80}>
               <h2
                 className="font-serif leading-[0.9]"
-                style={{ fontSize: "clamp(2.4rem, 7vw, 6rem)", color: "var(--ink)" }}
+                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", color: "var(--ink)" }}
               >
-                Kind words.<br />
-                <span style={{ color: "var(--gold)" }}>Real outcomes.</span>
+                <span className="block">Kind words.</span>
+                <span className="block" style={{ color: "var(--gold)" }}>Real outcomes.</span>
               </h2>
             </Reveal>
           </div>
           <Reveal delay={150}>
             <div
-              className="rounded-2xl p-5 md:p-6 md:text-right"
+              className="w-full max-w-[14rem] self-start rounded-2xl p-5 md:max-w-none md:self-auto md:p-6 md:text-right"
               style={{
                 background: "rgba(212,168,83,0.06)",
                 border: "1px solid rgba(212,168,83,0.2)",

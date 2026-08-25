@@ -17,8 +17,8 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
 
   return (
     <section id="work" className="relative overflow-hidden border-y" style={{ background: "var(--bg)", borderColor: "var(--line)" }}>
-      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-10 md:py-24">
-        <div className="mb-10 grid gap-8 md:grid-cols-12 md:items-end md:mb-12">
+      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 grid gap-7 md:mb-12 md:grid-cols-12 md:items-end md:gap-8">
           <div className="md:col-span-7">
           <Reveal>
             <div className="mb-5 flex items-center gap-4">
@@ -27,8 +27,9 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
             </div>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
-              Work with<br /><span style={{ color: "var(--gold)" }}>a point of view.</span>
+            <h2 className="font-serif text-[clamp(2.75rem,10vw,4.5rem)] font-bold leading-[0.95] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
+              <span className="block">Work with</span>
+              <span className="block" style={{ color: "var(--gold)" }}>a point of view.</span>
             </h2>
           </Reveal>
           </div>

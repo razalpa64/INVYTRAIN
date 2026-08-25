@@ -48,7 +48,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
   const [selected, setSelected] = useState<VentureSlug | null>(null);
   const [values, setValues] = useState<Record<string, string>>({});
 
-  const fields = selected ? FIELDS[selected] : [];
+  const fields = useMemo(() => (selected ? FIELDS[selected] : []), [selected]);
   const activeChoice = CHOICES.find((c) => c.key === selected);
 
   const message = useMemo(() => {
@@ -84,8 +84,8 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
       className="relative overflow-hidden border-t"
       style={{ borderColor: "var(--line)", background: "var(--bg)" }}
     >
-      <div className="relative mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-36">
-        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-12">
+      <div className="relative mx-auto max-w-[1400px] px-5 py-20 sm:px-6 md:px-10 md:py-36">
+        <div className="mb-12 grid grid-cols-1 gap-8 md:mb-16 md:grid-cols-12">
           <div className="md:col-span-6">
             <Reveal>
               <p className="eyebrow mb-5">Let&apos;s talk</p>
@@ -93,10 +93,10 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
             <Reveal delay={80}>
               <h2
                 className="font-serif font-bold leading-[0.95] tracking-tight"
-                style={{ fontSize: "clamp(2.8rem, 5.5vw, 4.8rem)", color: "var(--ink)" }}
+                style={{ fontSize: "clamp(2.7rem, 5.5vw, 4.8rem)", color: "var(--ink)" }}
               >
-                What are you<br />
-                <span style={{ color: "var(--gold)" }}>Looking For?</span>
+                <span className="block">What are you</span>
+                <span className="block" style={{ color: "var(--gold)" }}>Looking For?</span>
               </h2>
             </Reveal>
           </div>
@@ -122,7 +122,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
                   type="button"
                   onClick={() => { setSelected(choice.key); setValues({}); }}
                   data-cursor="SELECT"
-                  className="group relative w-full overflow-hidden rounded-2xl p-8 text-left transition-all duration-300"
+                  className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300 sm:p-8"
                   style={{
                     background: "var(--surface)",
                     border: `1px solid ${isSelected ? choice.accent : "var(--line-strong)"}`,
@@ -147,7 +147,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
         {/* Form */}
         {selected && (
           <div
-            className="mt-12 rounded-2xl p-8 md:p-12"
+            className="mt-10 rounded-2xl p-6 sm:mt-12 sm:p-8 md:p-12"
             style={{
               background: "var(--surface)",
               border: "1px solid var(--line-strong)",
