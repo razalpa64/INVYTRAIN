@@ -40,7 +40,7 @@ export default function Hero({
         <div
           className="absolute inset-0"
           style={{
-            background: "radial-gradient(ellipse at center, rgba(246, 244, 238, 0.50) 0%, rgba(246, 244, 238, 0.90) 85%)",
+            background: "radial-gradient(ellipse at center, color-mix(in srgb, var(--bg) 42%, transparent) 0%, color-mix(in srgb, var(--bg) 92%, transparent) 85%)",
           }}
         />
       </div>
@@ -59,7 +59,7 @@ export default function Hero({
             style={{
               borderColor: "rgba(184, 137, 62, 0.4)",
               color: "var(--gold)",
-              background: "rgba(255, 253, 248, 0.88)",
+              background: "color-mix(in srgb, var(--surface) 88%, transparent)",
               boxShadow: "0 2px 14px rgba(0,0,0,0.03)",
             }}
           >
@@ -69,7 +69,7 @@ export default function Hero({
 
         {/* Hero Title */}
         <h1
-          className="font-display font-serif text-[clamp(3.75rem,13vw,6.5rem)] leading-[0.88] tracking-[-0.04em] sm:text-[6.5rem] md:text-[8rem] lg:text-[9.5rem]"
+          className="font-display font-serif text-[clamp(3.6rem,13vw,6.5rem)] leading-[0.88] tracking-[-0.04em] sm:text-[6.5rem] md:text-[8rem] lg:text-[9.5rem]"
           style={{ color: "var(--ink)" }}
         >
           {titleLines.map((line, i) => (
@@ -117,7 +117,7 @@ export default function Hero({
       </div>
 
       {/* Bottom Venture Bar — Horizontal 3-Column Showcase */}
-      <div className="relative z-10 border-t" style={{ borderColor: "var(--line)", background: "rgba(255, 253, 248, 0.70)", backdropFilter: "blur(10px)" }}>
+      <div className="relative z-10 border-t" style={{ borderColor: "var(--line)", background: "color-mix(in srgb, var(--surface) 72%, transparent)", backdropFilter: "blur(10px)" }}>
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x" style={{ borderColor: "var(--line)" }}>
           {siteContent.ventures.map((v) => (
             <Link

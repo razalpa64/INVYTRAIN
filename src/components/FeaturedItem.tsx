@@ -17,7 +17,7 @@ export default function FeaturedItem({ offering, index }: { offering: Offering; 
     <Reveal className={`group relative overflow-hidden rounded-[22px] ${sizeClass}`} delay={index * 90}>
       <Link
         href={offering.link ?? "#"}
-        className="relative block h-full w-full overflow-hidden rounded-[22px]"
+        className="interactive-card relative block h-full w-full overflow-hidden rounded-[22px]"
         style={{
           border: "1px solid var(--line-strong)",
           background: "var(--surface)",

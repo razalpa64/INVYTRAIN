@@ -41,21 +41,11 @@ export default function WhyInvytra() {
           {siteContent.principles.items.map((p, i) => (
             <Reveal key={p.n} delay={i * 80}>
               <div
-                className="group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 sm:p-8 md:p-10"
+                className="interactive-card group relative overflow-hidden rounded-2xl p-6 sm:p-8 md:p-10"
                 style={{
                   background: "var(--surface)",
                   border: "1px solid var(--line-strong)",
                   boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = "var(--gold)";
-                  el.style.transform = "translateY(-4px)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = "var(--line-strong)";
-                  el.style.transform = "translateY(0)";
                 }}
               >
                 <span

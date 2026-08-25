@@ -32,10 +32,10 @@ export default function ServicesOverview() {
           {siteContent.ventures.map((venture) => {
             const accent = SERVICE_ACCENTS[venture.slug] ?? SERVICE_ACCENTS.event;
             return (
-              <article key={venture.slug} className="group flex h-full flex-col overflow-hidden rounded-2xl border" style={{ background: "var(--surface)", borderColor: "var(--line-strong)" }}>
-                <div className="relative aspect-[16/8] overflow-hidden" data-parallax="18" style={{ background: accent.wash }}>
+              <article key={venture.slug} className="interactive-card group flex h-full flex-col overflow-hidden rounded-2xl border" style={{ background: "var(--surface)", borderColor: "var(--line-strong)" }}>
+                <div className="image-zoom relative aspect-[16/8] overflow-hidden" data-parallax="18" style={{ background: accent.wash }}>
                   {venture.heroImage ? (
-                    <Image src={venture.heroImage} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <Image src={venture.heroImage} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                   ) : null}
                   <div className="absolute inset-0" style={{ background: `linear-gradient(90deg, ${accent.color}b8, transparent 75%)` }} />
                   <span className="absolute left-6 top-5 font-serif text-4xl font-bold text-white">{venture.number}</span>

@@ -26,25 +26,36 @@ export default function LearnCreateCelebrate() {
 
   useEffect(() => {
     let raf = 0;
-    const tick = () => {
+    const updateProgress = () => {
       const el = sectionRef.current;
       if (el) {
         const rect = el.getBoundingClientRect();
         const total = rect.height - window.innerHeight;
         const raw = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-        setProgress(raw);
-        setActive(Math.min(chapters.length - 1, Math.floor(raw * chapters.length)));
+        const nextActive = Math.min(chapters.length - 1, Math.floor(raw * chapters.length));
+        el.style.setProperty("--chapter-progress", String(raw));
+        setProgress((previous) => Math.abs(previous - raw) > 0.01 ? raw : previous);
+        setActive((previous) => previous === nextActive ? previous : nextActive);
       }
-      raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(updateProgress);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, [chapters.length]);
 
   const ch = chapters[active] || chapters[0];
 
   return (
-    <section ref={sectionRef} className="h-[300vh] md:h-[350vh]">
+    <section ref={sectionRef} className="h-[280vh] sm:h-[300vh] md:h-[350vh]">
       <div className="sticky top-0 h-[100svh] min-h-[34rem] w-full overflow-hidden">
 
         {/* ── FULL-BLEED PHOTOS FROM site.json ── */}

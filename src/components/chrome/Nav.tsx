@@ -34,13 +34,13 @@ export default function Nav({ brandName }: { brandName: string }) {
         style={{
           padding: scrolled ? "12px 0" : "20px 0",
           background: scrolled
-            ? "rgba(255, 253, 248, 0.85)"
+            ? "color-mix(in srgb, var(--surface) 86%, transparent)"
             : "transparent",
           backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
           borderBottom: scrolled ? "1px solid rgba(184, 137, 62, 0.15)" : "none",
           boxShadow: scrolled
-            ? "0 4px 24px rgba(0,0,0,0.04), 0 1px 0 rgba(255,255,255,0.8) inset"
+            ? "0 4px 24px rgba(0,0,0,0.04), 0 1px 0 color-mix(in srgb, var(--surface) 80%, transparent) inset"
             : "none",
         }}
       >
@@ -138,7 +138,7 @@ export default function Nav({ brandName }: { brandName: string }) {
       <div
         className="fixed inset-0 z-[890] flex flex-col justify-center overflow-hidden px-8 md:hidden"
         style={{
-          background: "rgba(255, 253, 248, 0.97)",
+          background: "color-mix(in srgb, var(--surface) 97%, transparent)",
           backdropFilter: "blur(24px)",
           WebkitBackdropFilter: "blur(24px)",
           transform: open ? "translateX(0)" : "translateX(100%)",

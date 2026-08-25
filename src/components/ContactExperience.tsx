@@ -122,7 +122,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
                   type="button"
                   onClick={() => { setSelected(choice.key); setValues({}); }}
                   data-cursor="SELECT"
-                  className="group relative flex min-h-40 w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-left transition-all duration-300 sm:p-8"
+                  className="interactive-card group relative flex min-h-40 w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-left sm:p-8"
                   style={{
                     background: "var(--surface)",
                     border: `1px solid ${isSelected ? choice.accent : "var(--line-strong)"}`,
@@ -236,7 +236,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
               href={item.href}
               target={item.target}
               rel={item.target ? "noreferrer" : undefined}
-              className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
+              className="interactive-card rounded-2xl p-6"
               style={{
                 background: "var(--surface)",
                 border: "1px solid var(--line-strong)",
