@@ -10,8 +10,11 @@ export default function LearnCreateCelebrate() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const chapters = siteContent.ventures.map((v) => ({
-    number: v.number,
+  const chapterOrder = ["learning", "project", "event"];
+  const chapters = [...siteContent.ventures]
+    .sort((a, b) => chapterOrder.indexOf(a.slug) - chapterOrder.indexOf(b.slug))
+    .map((v, index) => ({
+    number: String(index + 1).padStart(2, "0"),
     word: v.slug === "learning" ? "LEARN" : v.slug === "project" ? "CREATE" : "CELEBRATE",
     sub: v.name,
     tagline: v.description,
@@ -41,8 +44,8 @@ export default function LearnCreateCelebrate() {
   const ch = chapters[active] || chapters[0];
 
   return (
-    <section ref={sectionRef} style={{ height: "350vh" }}>
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
+    <section ref={sectionRef} className="h-[420vh] md:h-[350vh]">
+      <div className="sticky top-0 h-[100svh] min-h-[34rem] w-full overflow-hidden">
 
         {/* ── FULL-BLEED PHOTOS FROM site.json ── */}
         {chapters.map((c, i) => (
@@ -97,7 +100,7 @@ export default function LearnCreateCelebrate() {
 
         {/* ── ALL CONTENT ── */}
         <div
-          className="absolute inset-0 flex flex-col justify-between px-8 py-10 md:px-16 md:py-12"
+          className="absolute inset-0 flex flex-col justify-between px-5 py-7 md:px-16 md:py-12"
           style={{ zIndex: 10 }}
         >
           {/* TOP ROW */}
@@ -123,19 +126,19 @@ export default function LearnCreateCelebrate() {
               className="text-[11px] font-bold uppercase tracking-[0.35em]"
               style={{ color: "rgba(255,255,255,0.55)" }}
             >
-              The Invytra Pillars
+              <span className="hidden sm:inline">The Invytra Pillars</span>
             </p>
           </div>
 
           {/* BOTTOM CONTENT */}
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:flex-row md:items-end md:justify-between md:gap-6 md:pb-0">
 
             {/* Left — Word + tagline */}
             <div className="flex flex-col">
 
               {/* Sub-label */}
               <p
-                className="mb-3 text-[11px] font-extrabold uppercase tracking-[0.35em]"
+                className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.28em] sm:mb-3 sm:text-[11px] sm:tracking-[0.35em]"
                 style={{
                   color: ch.accent,
                   transition: "color 0.8s ease",
@@ -147,14 +150,14 @@ export default function LearnCreateCelebrate() {
               {/* Giant word — cross-fade per chapter */}
               <div
                 className="relative overflow-visible"
-                style={{ height: "clamp(5rem, 13vw, 10.5rem)" }}
+                style={{ height: "clamp(4rem, 13vw, 10.5rem)" }}
               >
                 {chapters.map((c, i) => (
                   <h2
                     key={c.word}
                     className="absolute inset-0 font-serif font-bold leading-none tracking-tight"
                     style={{
-                      fontSize: "clamp(4.5rem, 13vw, 10.5rem)",
+                      fontSize: "clamp(3.75rem, 13vw, 10.5rem)",
                       color: "#FFFFFF",
                       textShadow: `0 2px 40px rgba(0,0,0,0.5)`,
                       opacity: active === i ? 1 : 0,
@@ -174,15 +177,15 @@ export default function LearnCreateCelebrate() {
 
               {/* Tagline — cross-fade per chapter */}
               <div
-                className="relative mt-4"
-                style={{ minHeight: "2rem" }}
+                className="relative mt-3 sm:mt-4"
+                style={{ minHeight: "clamp(2.5rem, 7vw, 3.25rem)" }}
               >
                 {chapters.map((c, i) => (
                   <p
                     key={c.word}
                     className="font-serif leading-relaxed"
                     style={{
-                      fontSize: "clamp(1rem, 1.8vw, 1.3rem)",
+                      fontSize: "clamp(0.95rem, 1.8vw, 1.3rem)",
                       color: "rgba(255,255,255,0.80)",
                       position: i === 0 ? "relative" : "absolute",
                       top: 0,
@@ -201,11 +204,11 @@ export default function LearnCreateCelebrate() {
             </div>
 
             {/* Right — CTA + progress */}
-            <div className="flex flex-col items-start md:items-end gap-4 shrink-0">
+            <div className="flex shrink-0 flex-col items-start gap-3 sm:gap-4 md:items-end">
               {/* CTA Button */}
               <Link
                 href={ch.href}
-                className="group inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-[11px] font-extrabold uppercase tracking-[0.25em] backdrop-blur-sm"
+                className="group inline-flex max-w-full items-center gap-3 rounded-full px-5 py-3 text-[10px] font-extrabold uppercase tracking-[0.18em] backdrop-blur-sm sm:px-7 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
                 style={{
                   background: "rgba(255,255,255,0.12)",
                   border: "1px solid rgba(255,255,255,0.35)",
