@@ -26,7 +26,7 @@ export default function IntroLoader() {
 
     let animationFrameId: number;
     let startTime: number | null = null;
-    const duration = 1400; // 1.4s counter + reveal + 0.6s curtain exit = 2.0s total
+    const duration = 2400;
 
     const updateLoader = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
@@ -54,7 +54,7 @@ export default function IntroLoader() {
             // ignore storage errors
           }
           window.dispatchEvent(new Event("invytra-intro-complete"));
-        }, 550);
+        }, 700);
       }
     };
 
