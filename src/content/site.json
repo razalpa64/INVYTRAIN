@@ -21,7 +21,7 @@
       }
     },
     "contact": {
-      "email": "hello@invytra.com",
+      "email": "invytra@gmail.com",
       "phone": "+91 86061 59002",
       "instagram": "https://instagram.com/invytra"
     },
@@ -113,7 +113,7 @@
         "Guidance & Support"
       ],
       "cta": "Explore Project Division",
-      "link": "/project",
+      "link": "https://invytraproject.vercel.app/",
       "active": true,
       "sortOrder": 1
     },
