@@ -9,6 +9,7 @@ import WhyInvytra from "@/components/WhyInvytra";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactExperience from "@/components/ContactExperience";
 import FinalCTA from "@/components/FinalCTA";
+import AdUnit from "@/components/AdUnit";
 import Footer from "@/components/Footer";
 import { getFeaturedWork, getSiteConfig, getStats, getTestimonials } from "@/lib/data";
 
@@ -35,6 +36,8 @@ export default async function HomePage() {
         />
         <LearnCreateCelebrate />
         <ServicesOverview />
+
+        <AdUnit />
 
         {config.settings.showFeatured ? <FeaturedWork items={featured} /> : null}
 
