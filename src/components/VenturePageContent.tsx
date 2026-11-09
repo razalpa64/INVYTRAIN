@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/chrome/Nav";
 import Footer from "@/components/Footer";
 import OfferingCard from "@/components/OfferingCard";
+import AdUnit from "@/components/AdUnit";
 import Reveal from "@/components/motion/Reveal";
 import { getOfferings, getSiteConfig, getVentureBySlug } from "@/lib/data";
 import { ventureWhatsappLink } from "@/lib/whatsapp";
@@ -83,6 +84,8 @@ export default async function VenturePageContent({ slug }: { slug: VentureSlug }
             )}
           </div>
         </section>
+
+        <AdUnit />
 
         <section className="border-t border-line py-20 text-center">
           <Reveal>
