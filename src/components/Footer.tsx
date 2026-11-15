@@ -21,6 +21,14 @@ const FOOTER_LINKS = [
       { label: "Contact", href: "/#contact" },
     ],
   },
+  {
+    heading: "Company",
+    items: [
+      { label: "About Invytra", href: "/about" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+    ],
+  },
 ];
 
 export default function Footer({ config }: { config: SiteConfigData }) {
@@ -32,7 +40,7 @@ export default function Footer({ config }: { config: SiteConfigData }) {
       <div className="relative mx-auto max-w-[1400px] px-6 pt-20 pb-10 md:px-10 md:pt-24">
         <div className="grid grid-cols-1 gap-12 border-b pb-16 md:grid-cols-12" style={{ borderColor: "var(--line)" }}>
           {/* Brand */}
-          <div className="md:col-span-5">
+          <div className="md:col-span-3">
             <Link href="/" className="inline-block">
               <p
                 className="font-serif text-3xl font-bold tracking-[0.2em]"

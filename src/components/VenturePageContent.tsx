@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/chrome/Nav";
 import Footer from "@/components/Footer";
 import OfferingCard from "@/components/OfferingCard";
+import VentureGuide from "@/components/VentureGuide";
 import AdUnit from "@/components/AdUnit";
 import Reveal from "@/components/motion/Reveal";
 import { getOfferings, getSiteConfig, getVentureBySlug } from "@/lib/data";
@@ -84,6 +85,8 @@ export default async function VenturePageContent({ slug }: { slug: VentureSlug }
             )}
           </div>
         </section>
+
+        <VentureGuide slug={slug} />
 
         <AdUnit />
 
