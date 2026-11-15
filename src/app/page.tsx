@@ -8,6 +8,7 @@ import StatsSection from "@/components/StatsSection";
 import WhyInvytra from "@/components/WhyInvytra";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactExperience from "@/components/ContactExperience";
+import HomeFaq from "@/components/HomeFaq";
 import FinalCTA from "@/components/FinalCTA";
 import AdUnit from "@/components/AdUnit";
 import Footer from "@/components/Footer";
@@ -50,6 +51,8 @@ export default async function HomePage() {
         <ContactExperience config={config} />
 
         <AboutSection />
+
+        <HomeFaq />
 
         <FinalCTA />
       </main>

@@ -81,6 +81,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
             {all.map((review, i) => (
               <figure
                 key={`r1-${review.id}-${i}`}
+                aria-hidden={i >= testimonials.length || undefined}
                 className="group flex w-[280px] sm:w-[340px] flex-shrink-0 flex-col rounded-2xl p-5 sm:p-7"
                 style={{
                   background: "rgba(255,255,255,0.03)",
@@ -109,7 +110,7 @@ export default function TestimonialsSection({ testimonials }: { testimonials: Te
 
         {/* Row 2 — reversed direction */}
         {testimonials.length > 2 && (
-          <div className="overflow-hidden py-3">
+          <div className="overflow-hidden py-3" aria-hidden="true">
             <div className="marquee-track-rev gap-5 py-1">
               {[...all].reverse().map((review, i) => (
                 <figure
