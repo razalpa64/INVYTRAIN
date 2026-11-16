@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import Reveal from "./motion/Reveal";
 import { siteContent } from "@/lib/content";
 
@@ -14,10 +13,7 @@ export default function FinalCTA() {
       />
       <div className="relative mx-auto flex max-w-3xl flex-col items-center px-5 py-20 sm:px-6 md:py-28">
         <Reveal>
-          <Image src="/images/logo-mark.png" alt="" width={282} height={505} className="h-20 w-auto" aria-hidden />
-        </Reveal>
-        <Reveal delay={80}>
-          <p className="mt-7 text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#C49A48]">The next step</p>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#C49A48]">The next step</p>
         </Reveal>
         <Reveal delay={140}>
           <h2 className="mt-5 font-display text-[clamp(2.6rem,7.5vw,5rem)]">

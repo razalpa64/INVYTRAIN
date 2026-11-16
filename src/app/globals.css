@@ -238,6 +238,11 @@ a, button { cursor: pointer; }
 }
 .btn-whatsapp:hover { background: #178A45; transform: translateY(-2px); }
 
+/* Unified photographic grade — applied to EVERY photo site-wide so
+   images from different shoots read as one matched set: gently warmed,
+   slightly desaturated, lifted contrast (matches the logo's palette). */
+.img-warm { filter: sepia(0.24) saturate(0.85) contrast(1.06) brightness(0.99); }
+
 /* Framed photo treatment — offset charcoal keyline, editorial */
 .photo-frame { position: relative; }
 .photo-frame::before {

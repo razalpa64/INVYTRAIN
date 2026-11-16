@@ -82,17 +82,16 @@ export default async function VenturePageContent({ slug }: { slug: VentureSlug }
                 </Reveal>
               </div>
               <Reveal variant="image" delay={140}>
-                <div className="photo-frame overflow-hidden rounded-[2rem]">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-bg-2 lg:aspect-[4/3.6]">
-                    <Image
-                      src={`/images/${slug}-photo.jpg`}
-                      alt={venture.name}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 45vw"
-                      className="object-cover"
-                    />
-                  </div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.6rem] bg-bg-2 lg:aspect-[4/3.4]">
+                  <Image
+                    src={`/images/${slug}-photo.jpg`}
+                    alt={venture.name}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    className="img-warm object-cover"
+                  />
+                  <span className="absolute inset-x-0 top-0 h-1 bg-[#C49A48] opacity-80" />
                 </div>
               </Reveal>
             </div>

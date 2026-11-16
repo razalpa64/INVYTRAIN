@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import FeaturedWork from "@/components/FeaturedWork";
 import StatsSection from "@/components/StatsSection";
 import WhyInvytra from "@/components/WhyInvytra";
+import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactExperience from "@/components/ContactExperience";
 import HomeFaq from "@/components/HomeFaq";
@@ -47,6 +48,8 @@ export default async function HomePage() {
         {config.settings.showStats ? <StatsSection stats={stats} /> : null}
 
         <WhyInvytra />
+
+        <ProcessSection />
 
         {config.settings.showTestimonials ? <TestimonialsSection testimonials={testimonials} /> : null}
 
