@@ -26,7 +26,7 @@ const STEPS = [
 /** How working with Invytra works — identical promise across divisions. */
 export default function ProcessSection() {
   return (
-    <section className="border-b border-line bg-bg-2">
+    <section id="process" className="scroll-mt-24 border-b border-line bg-bg-2">
       <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
         <div className="mb-12">
           <Reveal>
