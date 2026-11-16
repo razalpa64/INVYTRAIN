@@ -117,6 +117,17 @@ a, button { cursor: pointer; }
 /* =========================================================================
    Keyframes
    ========================================================================= */
+@keyframes hero-drift {
+  from { transform: scale(1.14) translate(0, 0); }
+  to   { transform: scale(1.26) translate(-1.6%, -2.2%); }
+}
+/* Cinematic hero backdrop: slow Ken Burns drift + soft blur, so a still
+   photograph breathes like video footage behind the headline. */
+.hero-bg {
+  animation: hero-drift 30s ease-in-out infinite alternate;
+  filter: blur(2.5px) saturate(1.06) contrast(1.03);
+  will-change: transform;
+}
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -290,6 +301,7 @@ a, button { cursor: pointer; }
     transition: none !important; transform: none !important; opacity: 1 !important;
   }
   .marquee-track, .marquee-track-rev { animation: none !important; }
+  .hero-bg { animation: none !important; }
   *, *::before, *::after { scroll-behavior: auto !important; }
 }
 

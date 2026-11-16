@@ -65,7 +65,7 @@ export default function ServicesOverview() {
                   <Link href={`/${venture.slug}`} className="group relative block overflow-hidden rounded-[1.6rem]" tabIndex={-1} aria-hidden>
                     <div className="relative aspect-[16/10] overflow-hidden bg-bg-2">
                       <Image
-                        src={`/images/${venture.slug}-photo.jpg`}
+                        src={`/images/${venture.slug}-new.jpg`}
                         alt=""
                         fill
                         sizes="(max-width: 1024px) 100vw, 58vw"

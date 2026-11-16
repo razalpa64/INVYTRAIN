@@ -18,6 +18,11 @@ const VENTURES = [
   { href: "/event", label: "Invytra Event", sub: "Digital invitations & event sites" },
 ];
 
+/**
+ * Floating pill menubar — detaches from the page edge, glass surface,
+ * logo tile left, links centre, CTA right. On mobile the menu drops
+ * as a rounded sheet directly beneath the pill.
+ */
 export default function Nav({ brandName }: { brandName: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -38,107 +43,116 @@ export default function Nav({ brandName }: { brandName: string }) {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-[900] transition-all duration-300 ${
-          scrolled ? "bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] shadow-[0_1px_0_var(--line),0_12px_32px_rgba(27,25,21,0.06)] backdrop-blur-xl" : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex h-[4.5rem] max-w-[1400px] items-center justify-between gap-4 px-5 sm:px-6 md:px-10">
+      <header className="fixed inset-x-0 top-0 z-[900] px-3 pt-3 sm:px-5 sm:pt-4">
+        <div
+          className={`mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-3 rounded-[1.4rem] border px-3.5 transition-all duration-300 sm:px-4 ${
+            scrolled
+              ? "border-line bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] shadow-[0_18px_44px_rgba(22,20,15,0.14)] backdrop-blur-xl"
+              : "border-white/25 bg-[color-mix(in_srgb,var(--bg)_68%,transparent)] shadow-[0_10px_30px_rgba(22,20,15,0.10)] backdrop-blur-xl"
+          }`}
+        >
           {/* Brand */}
-          <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="Invytra — home">
-            <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-coal shadow-[0_6px_18px_rgba(22,20,15,0.35)] ring-1 ring-black/20">
-              <Image src="/images/logo-tile.png" alt="Invytra logo" fill sizes="44px" className="object-contain" priority />
+          <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="Invytra — home">
+            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-[0.8rem] bg-coal ring-1 ring-black/25">
+              <Image src="/images/logo-tile.png" alt="Invytra logo" fill sizes="40px" className="object-contain" priority />
             </span>
             <span className="min-w-0 leading-none">
-              <span className="block truncate font-serif text-[1.35rem] font-bold tracking-[0.14em] text-ink">
+              <span className="block truncate font-serif text-[1.2rem] font-bold tracking-[0.12em] text-ink">
                 {brandName || "INVYTRA"}
               </span>
-              <span className="mt-1 hidden text-[8.5px] font-bold uppercase tracking-[0.3em] text-gold-dark min-[420px]:block">
+              <span className="mt-0.5 hidden text-[8px] font-bold uppercase tracking-[0.28em] text-gold-dark min-[420px]:block">
                 Build a brighter tomorrow
               </span>
             </span>
           </Link>
 
           {/* Desktop links */}
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[12px] font-bold uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-gold-dark"
+                className="rounded-full px-4 py-2.5 text-[12px] font-bold uppercase tracking-[0.12em] text-ink-muted transition hover:bg-bg-2 hover:text-ink"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <Link href="/#contact" className="btn-shimmer hidden px-6 py-3 text-[11px] sm:inline-flex">
+          <div className="flex items-center gap-2">
+            <Link
+              href="/#contact"
+              className="hidden min-h-[44px] items-center rounded-full bg-coal px-5 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-coal-ink transition hover:bg-gold-dark sm:inline-flex"
+            >
               Get started
             </Link>
-            {/* Mobile burger — 48px touch target */}
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="flex h-12 w-12 flex-col items-center justify-center gap-[6px] rounded-full border border-line-strong bg-surface lg:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-full border border-line-strong bg-surface lg:hidden"
             >
-              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "translate-y-[4px] rotate-45" : ""}`} />
-              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "-translate-y-[4px] -rotate-45" : ""}`} />
+              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
+              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
             </button>
           </div>
         </div>
-      </header>
 
-      {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-[890] overflow-y-auto bg-bg transition-[opacity,visibility] duration-300 lg:hidden ${
-          open ? "visible opacity-100" : "invisible opacity-0"
-        }`}
-      >
-        <div className="px-5 pb-10 pt-24 sm:px-6">
-          <p className="index-chip mb-4"><b>—</b> Menu</p>
-          <nav className="flex flex-col" aria-label="Mobile">
+        {/* Mobile dropdown sheet */}
+        <div
+          className={`mx-auto mt-2 max-w-[1320px] overflow-hidden rounded-[1.4rem] border border-line bg-bg shadow-[0_24px_54px_rgba(22,20,15,0.18)] transition-all duration-300 lg:hidden ${
+            open ? "visible max-h-[80svh] overflow-y-auto opacity-100" : "invisible max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="p-3" aria-label="Mobile">
             {LINKS.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-baseline gap-4 border-b border-line py-4"
+                className="flex items-baseline gap-3.5 rounded-2xl px-3 py-3 transition hover:bg-bg-2"
               >
                 <span className="font-serif text-sm text-gold-dark">0{i + 1}</span>
-                <span className="font-serif text-3xl font-semibold text-ink">{link.label}</span>
+                <span className="font-serif text-[1.55rem] font-semibold leading-none text-ink">{link.label}</span>
               </Link>
             ))}
-          </nav>
-
-          <p className="index-chip mb-3 mt-9"><b>—</b> Our divisions</p>
-          <div className="flex flex-col gap-3">
-            {VENTURES.map((v) => (
+            <div className="mt-2 grid gap-2 border-t border-line p-2 pt-4">
+              {VENTURES.map((v) => (
+                <Link
+                  key={v.href}
+                  href={v.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-2xl border border-line bg-surface px-4 py-3.5"
+                >
+                  <span>
+                    <span className="block font-serif text-lg font-semibold leading-tight text-ink">{v.label}</span>
+                    <span className="mt-0.5 block text-[13px] text-ink-muted">{v.sub}</span>
+                  </span>
+                  <span className="text-gold-dark" aria-hidden>↗</span>
+                </Link>
+              ))}
               <Link
-                key={v.href}
-                href={v.href}
+                href="/#contact"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-2xl border border-line bg-surface px-5 py-4"
+                className="mt-1 inline-flex min-h-[50px] items-center justify-center rounded-full bg-coal px-6 py-3.5 text-[11px] font-extrabold uppercase tracking-[0.14em] text-coal-ink"
               >
-                <span>
-                  <span className="block font-serif text-xl font-semibold text-ink">{v.label}</span>
-                  <span className="mt-0.5 block text-sm text-ink-muted">{v.sub}</span>
-                </span>
-                <span className="text-gold-dark" aria-hidden>↗</span>
+                Get started →
               </Link>
-            ))}
-          </div>
-
-          <Link href="/#contact" onClick={() => setOpen(false)} className="btn-shimmer mt-8 w-full px-6 py-4 text-[12px]">
-            Get started →
-          </Link>
-          <p className="mt-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
-            Learn · Create · Celebrate
-          </p>
+            </div>
+          </nav>
         </div>
-      </div>
+      </header>
+
+      {/* Tap-away layer for the mobile sheet */}
+      {open ? (
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-[890] bg-[#16140F]/35 backdrop-blur-[2px] lg:hidden"
+        />
+      ) : null}
     </>
   );
 }
