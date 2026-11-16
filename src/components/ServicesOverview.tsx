@@ -54,7 +54,7 @@ export default function ServicesOverview() {
           </Reveal>
         </div>
 
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-12 md:space-y-24">
           {siteContent.ventures.map((venture, i) => {
             const flip = i % 2 === 1;
             const price = startingPrice(venture.slug);

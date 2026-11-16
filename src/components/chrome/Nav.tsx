@@ -25,10 +25,20 @@ const VENTURES = [
  */
 export default function Nav({ brandName }: { brandName: string }) {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // Hide while scrolling down (past the hero fold), return on scroll up —
+      // the bar should never sit on top of what you're reading.
+      setHidden(y > 160 && y > lastY + 4);
+      if (y < lastY - 4 || y <= 160) setHidden(false);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,7 +53,11 @@ export default function Nav({ brandName }: { brandName: string }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[900] px-3 pt-3 sm:px-5 sm:pt-4">
+      <header
+        className={`fixed inset-x-0 top-0 z-[900] px-3 pt-3 transition-transform duration-300 ease-out sm:px-5 sm:pt-4 ${
+          hidden && !open ? "-translate-y-[130%]" : "translate-y-0"
+        }`}
+      >
         <div
           className={`mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-3 rounded-[1.4rem] border px-3.5 transition-all duration-300 sm:px-4 ${
             scrolled
