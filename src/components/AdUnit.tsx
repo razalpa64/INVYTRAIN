@@ -47,8 +47,8 @@ export default function AdUnit({ slot = DISPLAY_AD_SLOT, className = "" }: AdUni
 
   return (
     <section aria-label="Advertisement" className={`mx-auto w-full max-w-[1400px] px-6 py-10 md:px-10 ${className}`}>
-      <p className="mb-3 text-center text-[10px] uppercase tracking-[0.3em] text-ink-muted">Advertisement</p>
-      <div className="mx-auto min-h-[100px] w-full max-w-[970px]">
+      <p className="mb-3 text-center text-[10px] uppercase tracking-[0.3em] text-ink-faint">Advertisement</p>
+      <div className="mx-auto min-h-[100px] w-full max-w-[970px] rounded-2xl border border-dashed border-line bg-surface-2/60 px-2 py-2">
         <ins
           ref={insRef}
           className="adsbygoogle block"

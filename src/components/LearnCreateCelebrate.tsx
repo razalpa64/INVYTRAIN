@@ -1,266 +1,43 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { siteContent } from "@/lib/content";
+import Reveal from "@/components/motion/Reveal";
 
+const WORDS = [
+  { word: "Learn", sub: "Invytra Learning", href: "/learning", note: "One student. One tutor. Real progress." },
+  { word: "Create", sub: "Invytra Project", href: "/project", note: "Software built — and understood." },
+  { word: "Celebrate", sub: "Invytra Event", href: "/event", note: "Invitations guests actually enjoy." },
+];
+
+/**
+ * Manifesto strip — the brand philosophy as three tappable editorial
+ * rows. (Replaces the previous 350vh scroll-jacked chapter animation,
+ * which trapped mobile users in a long empty scroll.)
+ */
 export default function LearnCreateCelebrate() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  const chapterOrder = ["learning", "project", "event"];
-  const chapters = [...siteContent.ventures]
-    .sort((a, b) => chapterOrder.indexOf(a.slug) - chapterOrder.indexOf(b.slug))
-    .map((v, index) => ({
-      number: String(index + 1).padStart(2, "0"),
-      word: v.slug === "learning" ? "LEARN" : v.slug === "project" ? "CREATE" : "CELEBRATE",
-      sub: v.name,
-      tagline: v.description,
-      href: v.link,
-      image: v.heroImage || `/images/${v.slug}-photo.jpg`,
-      overlay: v.slug === "learning" ? "rgba(15, 40, 30, 0.68)" : v.slug === "project" ? "rgba(45, 25, 8, 0.65)" : "rgba(50, 32, 5, 0.62)",
-      accent: v.slug === "learning" ? "#6DB89A" : v.slug === "project" ? "#E0A96D" : "#F0C87A",
-    }));
-
-  useEffect(() => {
-    let raf = 0;
-    const updateProgress = () => {
-      const el = sectionRef.current;
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        const total = rect.height - window.innerHeight;
-        const raw = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-        const nextActive = Math.min(chapters.length - 1, Math.floor(raw * chapters.length));
-        el.style.setProperty("--chapter-progress", String(raw));
-        setProgress((previous) => Math.abs(previous - raw) > 0.01 ? raw : previous);
-        setActive((previous) => previous === nextActive ? previous : nextActive);
-      }
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(updateProgress);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [chapters.length]);
-
-  const ch = chapters[active] || chapters[0];
-
   return (
-    <section ref={sectionRef} className="h-[280vh] sm:h-[300vh] md:h-[350vh]">
-      <div className="sticky top-0 h-[100svh] min-h-[34rem] w-full overflow-hidden">
-
-        {/* ── FULL-BLEED PHOTOS FROM site.json ── */}
-        {chapters.map((c, i) => (
-          <div
-            key={c.word}
-            className="absolute inset-0"
-            style={{
-              opacity: active === i ? 1 : 0,
-              transition: "opacity 1s ease-in-out",
-              zIndex: 0,
-            }}
-          >
-            <Image
-              src={c.image}
-              alt={c.word}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-
-        {/* ── DARK COLOUR OVERLAY ── */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: ch.overlay,
-            transition: "background 0.9s ease-in-out",
-            zIndex: 1,
-          }}
-        />
-
-        {/* ── VIGNETTE ── */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.55) 100%)",
-            zIndex: 2,
-          }}
-        />
-
-        {/* ── BOTTOM GRADIENT ── */}
-        <div
-          className="absolute inset-x-0 bottom-0 pointer-events-none"
-          style={{
-            height: "70%",
-            background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)",
-            zIndex: 2,
-          }}
-        />
-
-        {/* ── ALL CONTENT ── */}
-        <div
-          className="absolute inset-0 flex flex-col justify-between px-5 py-7 md:px-16 md:py-12"
-          style={{ zIndex: 10 }}
-        >
-          {/* TOP ROW */}
-          <div className="flex items-center justify-between">
-            {/* Step dots */}
-            <div className="flex items-center gap-2">
-              {chapters.map((_, i) => (
-                <div
-                  key={i}
-                  className="rounded-full"
-                  style={{
-                    width: active === i ? 28 : 8,
-                    height: 3,
-                    background: active === i ? ch.accent : "rgba(255,255,255,0.3)",
-                    transition: "all 0.5s ease",
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Section label */}
-            <p
-              className="text-[11px] font-bold uppercase tracking-[0.35em]"
-              style={{ color: "rgba(255,255,255,0.55)" }}
-            >
-              <span className="hidden sm:inline">The Invytra Pillars</span>
-            </p>
-          </div>
-
-          {/* BOTTOM CONTENT */}
-          <div className="flex flex-col gap-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:flex-row md:items-end md:justify-between md:gap-6 md:pb-0">
-
-            {/* Left — Word + tagline */}
-            <div className="flex flex-col">
-
-              {/* Sub-label */}
-              <p
-                className="mb-2 text-[10px] font-extrabold uppercase tracking-[0.28em] sm:mb-3 sm:text-[11px] sm:tracking-[0.35em]"
-                style={{
-                  color: ch.accent,
-                  transition: "color 0.8s ease",
-                }}
-              >
-                {ch.sub}
-              </p>
-
-              {/* Giant word — cross-fade per chapter */}
-              <div
-                className="relative overflow-visible"
-                style={{ height: "clamp(4rem, 13vw, 10.5rem)" }}
-              >
-                {chapters.map((c, i) => (
-                  <h2
-                    key={c.word}
-                    className="absolute inset-0 font-serif font-bold leading-none tracking-tight"
-                    style={{
-                      fontSize: "clamp(3.75rem, 13vw, 10.5rem)",
-                      color: "#FFFFFF",
-                      textShadow: `0 2px 40px rgba(0,0,0,0.5)`,
-                      opacity: active === i ? 1 : 0,
-                      transform: active === i
-                        ? "translateY(0)"
-                        : i < active
-                          ? "translateY(-18%)"
-                          : "translateY(18%)",
-                      transition: "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1)",
-                      pointerEvents: "none",
-                    }}
-                  >
-                    {c.word}
-                  </h2>
-                ))}
-              </div>
-
-              {/* Tagline — cross-fade per chapter */}
-              <div
-                className="relative mt-3 sm:mt-4"
-                style={{ minHeight: "clamp(2.5rem, 7vw, 3.25rem)" }}
-              >
-                {chapters.map((c, i) => (
-                  <p
-                    key={c.word}
-                    className="font-serif leading-relaxed"
-                    style={{
-                      fontSize: "clamp(0.95rem, 1.8vw, 1.3rem)",
-                      color: "rgba(255,255,255,0.80)",
-                      position: i === 0 ? "relative" : "absolute",
-                      top: 0,
-                      left: 0,
-                      opacity: active === i ? 1 : 0,
-                      transform: active === i ? "translateY(0)" : "translateY(8px)",
-                      transition: "opacity 0.6s ease 0.15s, transform 0.7s ease 0.15s",
-                      maxWidth: "36rem",
-                      pointerEvents: "none",
-                    }}
-                  >
-                    {c.tagline}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* Right — CTA + progress */}
-            <div className="flex shrink-0 flex-col items-start gap-3 sm:gap-4 md:items-end">
-              {/* CTA Button */}
+    <section className="border-b border-line bg-bg-2" aria-label="Learn, Create, Celebrate">
+      <div className="mx-auto max-w-[1400px] px-5 py-14 sm:px-6 md:px-10 md:py-20">
+        <Reveal>
+          <p className="index-chip mb-8"><b>✦</b> Our philosophy</p>
+        </Reveal>
+        <div>
+          {WORDS.map((item, i) => (
+            <Reveal key={item.word} delay={i * 70}>
               <Link
-                href={ch.href}
-                className="group inline-flex max-w-full items-center gap-3 rounded-full px-5 py-3 text-[10px] font-extrabold uppercase tracking-[0.18em] backdrop-blur-sm sm:px-7 sm:py-3.5 sm:text-[11px] sm:tracking-[0.25em]"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.35)",
-                  color: "#FFFFFF",
-                  transition: "background 0.3s ease, border-color 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.background = ch.accent;
-                  el.style.borderColor = ch.accent;
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.background = "rgba(255,255,255,0.12)";
-                  el.style.borderColor = "rgba(255,255,255,0.35)";
-                }}
+                href={item.href}
+                className="group flex flex-wrap items-baseline gap-x-6 gap-y-1 border-t border-line-strong py-5 last:border-b md:py-7"
               >
-                Explore {ch.sub}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </Link>
-
-              {/* Progress bar */}
-              <div className="flex items-center gap-3">
-                <div className="relative h-0.5 w-28 overflow-hidden rounded-full bg-white/20">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${progress * 100}%`,
-                      background: ch.accent,
-                      transition: "background 0.8s ease",
-                    }}
-                  />
-                </div>
-                <span className="font-serif text-xs font-bold" style={{ color: "rgba(255,255,255,0.45)" }}>
-                  {ch.number} / 03
+                <span className="font-serif text-sm font-semibold text-gold-dark">0{i + 1}</span>
+                <span className="font-display text-[clamp(2.6rem,8vw,5.2rem)] leading-none text-ink transition-colors group-hover:text-gold-dark">
+                  {item.word}
+                  <span className="display-italic">.</span>
                 </span>
-              </div>
-            </div>
-          </div>
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-ink-muted">{item.sub}</span>
+                <span className="w-full text-sm text-ink-muted sm:w-auto sm:flex-1 sm:text-right">{item.note}</span>
+                <span className="hidden text-xl text-gold-dark transition-transform group-hover:translate-x-1.5 sm:block" aria-hidden>→</span>
+              </Link>
+            </Reveal>
+          ))}
         </div>
-
       </div>
     </section>
   );

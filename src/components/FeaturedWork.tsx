@@ -20,63 +20,60 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   }, [items, tab]);
 
   return (
-    <section id="work" className="relative overflow-hidden border-y" style={{ background: "var(--bg)", borderColor: "var(--line)" }}>
-      <div className="mx-auto max-w-[1400px] px-5 py-12 sm:px-6 md:px-10 md:py-16">
-        <div className="mb-8 grid gap-6 md:mb-9 md:grid-cols-[minmax(0,1fr)_minmax(280px,0.6fr)] md:items-end md:gap-12">
+    <section id="work" className="border-b border-line bg-bg">
+      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-9 flex flex-wrap items-end justify-between gap-6">
           <div>
-          <Reveal>
-            <div className="mb-5 flex items-center gap-4">
-              <span className="font-serif text-2xl font-bold" style={{ color: "var(--gold)" }}>04</span>
-              <p className="eyebrow">Selected Work</p>
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2 className="max-w-[18ch] font-serif text-[clamp(2.75rem,10vw,4.5rem)] font-bold leading-[0.92] tracking-tight md:text-7xl" style={{ color: "var(--ink)" }}>
-              <span className="block">Work with</span>
-              <span className="block" style={{ color: "var(--gold)" }}>a point of view.</span>
-            </h2>
-          </Reveal>
+            <Reveal>
+              <p className="index-chip"><b>02</b> Selected work</p>
+            </Reveal>
+            <Reveal delay={70}>
+              <h2 className="mt-4 max-w-[16ch] font-display text-[clamp(2.4rem,6vw,4.2rem)] text-ink">
+                Work with <span className="display-italic">a point of view</span>
+              </h2>
+            </Reveal>
           </div>
-          <Reveal delay={140}>
-            <p className="max-w-md text-sm font-medium leading-[1.8]">
-              A selection of software, learning experiences, and celebrations shaped with clarity, care, and a little uncommon sense.
+          <Reveal delay={120}>
+            <p className="max-w-sm text-[15px] leading-[1.8] text-ink-muted">
+              A selection of software, learning experiences and celebrations — shaped with clarity, care, and a little
+              uncommon sense.
             </p>
           </Reveal>
         </div>
 
-        <Reveal delay={180}>
-          <div className="mb-6 flex flex-wrap items-center gap-2 border-y py-3" style={{ borderColor: "var(--line-strong)" }}>
-            <span className="mr-3 text-[10px] font-extrabold uppercase tracking-[0.2em]" style={{ color: "var(--ink-faint)" }}>Filter by</span>
+        <Reveal delay={140}>
+          <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filter work by division">
             {TABS.map((t) => {
               const active = tab === t;
               return (
                 <button
                   key={t}
                   type="button"
+                  role="tab"
+                  aria-selected={active}
                   onClick={() => setTab(t)}
-                  className="rounded-full px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.2em] transition-all duration-300"
-                  style={{
-                    background: active ? "var(--ink)" : "var(--surface)",
-                    color: active ? "var(--bg)" : "var(--ink)",
-                    border: `1px solid ${active ? "var(--ink)" : "var(--line-strong)"}`,
-                  }}
+                  className={`min-h-[44px] rounded-full border px-5 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.16em] transition ${
+                    active
+                      ? "border-coal bg-coal text-coal-ink"
+                      : "border-line-strong bg-surface text-ink hover:border-gold-dark hover:text-gold-dark"
+                  }`}
                 >
-                  {t}
+                  {t === "ALL" ? "All work" : t.charAt(0) + t.slice(1).toLowerCase()}
                 </button>
               );
             })}
           </div>
         </Reveal>
 
-      <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 md:auto-rows-[240px]">
-        {filtered.length ? (
-          filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
-        ) : (
-          <p className="col-span-full py-20 text-center text-sm font-bold uppercase tracking-[0.2em]" style={{ color: "var(--ink-muted)" }}>
-            More work coming soon.
-          </p>
-        )}
-      </div>
+        <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:auto-rows-[240px]">
+          {filtered.length ? (
+            filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
+          ) : (
+            <p className="col-span-full py-16 text-center text-sm font-bold uppercase tracking-[0.2em] text-ink-muted">
+              More work coming soon.
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

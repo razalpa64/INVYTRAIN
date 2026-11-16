@@ -8,7 +8,14 @@ const LINKS = [
   { href: "/#services", label: "Services" },
   { href: "/#work", label: "Work" },
   { href: "/#reviews", label: "Reviews" },
+  { href: "/about", label: "About" },
   { href: "/#contact", label: "Contact" },
+];
+
+const VENTURES = [
+  { href: "/project", label: "Invytra Project", sub: "Software & final-year projects" },
+  { href: "/learning", label: "Invytra Learning", sub: "1:1 online tutoring" },
+  { href: "/event", label: "Invytra Event", sub: "Digital invitations & event sites" },
 ];
 
 export default function Nav({ brandName }: { brandName: string }) {
@@ -16,7 +23,7 @@ export default function Nav({ brandName }: { brandName: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -24,145 +31,113 @@ export default function Nav({ brandName }: { brandName: string }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open ]);
 
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-[900] transition-all duration-500"
-        style={{
-          padding: scrolled ? "12px 0" : "20px 0",
-          background: scrolled
-            ? "color-mix(in srgb, var(--surface) 86%, transparent)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(184, 137, 62, 0.15)" : "none",
-          boxShadow: scrolled
-            ? "0 4px 24px rgba(0,0,0,0.04), 0 1px 0 color-mix(in srgb, var(--surface) 80%, transparent) inset"
-            : "none",
-        }}
+        className={`fixed inset-x-0 top-0 z-[900] transition-all duration-300 ${
+          scrolled ? "bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] shadow-[0_1px_0_var(--line),0_12px_32px_rgba(27,25,21,0.06)] backdrop-blur-xl" : "bg-transparent"
+        }`}
       >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
-
-          {/* Brand Logo & Wordmark */}
-          <Link
-            href="/"
-            data-cursor="HOME"
-            className="group relative flex items-center gap-3 font-serif text-2xl font-bold tracking-[0.22em]"
-            style={{ color: "var(--ink)" }}
-          >
-            {/* Logo Emblem */}
-            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[rgba(184,137,62,0.3)] shadow-sm bg-white/90 transition-transform duration-300 group-hover:scale-105">
-              <Image
-                src="/images/logo.jpg"
-                alt="INVYTRA Logo"
-                fill
-                sizes="40px"
-                className="object-contain p-0.5"
-                priority
-              />
-            </div>
-            <span>{brandName || "INVYTRA"}</span>
+        <div className="mx-auto flex h-[4.5rem] max-w-[1400px] items-center justify-between gap-4 px-5 sm:px-6 md:px-10">
+          {/* Brand */}
+          <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="Invytra — home">
+            <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-coal shadow-[0_6px_18px_rgba(22,20,15,0.35)] ring-1 ring-black/20">
+              <Image src="/images/logo-tile.png" alt="Invytra logo" fill sizes="44px" className="object-contain" priority />
+            </span>
+            <span className="min-w-0 leading-none">
+              <span className="block truncate font-serif text-[1.35rem] font-bold tracking-[0.14em] text-ink">
+                {brandName || "INVYTRA"}
+              </span>
+              <span className="mt-1 hidden text-[8.5px] font-bold uppercase tracking-[0.3em] text-gold-dark min-[420px]:block">
+                Build a brighter tomorrow
+              </span>
+            </span>
           </Link>
 
-          {/* Desktop nav links */}
-          <nav className="hidden items-center gap-10 md:flex">
+          {/* Desktop links */}
+          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group relative text-[11px] font-bold uppercase tracking-[0.22em] transition-colors duration-300"
-                style={{ color: "var(--ink-muted)" }}
+                className="text-[12px] font-bold uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-gold-dark"
               >
-                <span className="relative z-10 group-hover:text-[color:var(--gold)] transition-colors duration-300">
-                  {link.label}
-                </span>
-                {/* Underline on hover */}
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300 ease-out"
-                  style={{ background: "var(--gold)" }}
-                />
+                {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop right */}
-          <div className="hidden items-center gap-5 md:flex">
-            <Link
-              href="/#contact"
-              data-cursor="ENTER"
-              className="btn-shimmer px-6 py-3 text-[10px] tracking-[0.18em]"
-            >
-              Get Started
+          <div className="flex items-center gap-3">
+            <Link href="/#contact" className="btn-shimmer hidden px-6 py-3 text-[11px] sm:inline-flex">
+              Get started
             </Link>
-          </div>
-
-          {/* Mobile burger */}
-          <div className="flex items-center gap-4 md:hidden">
+            {/* Mobile burger — 48px touch target */}
             <button
               type="button"
-              aria-label="Toggle menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="relative z-10 flex h-8 w-8 flex-col items-center justify-center gap-[5px]"
+              className="flex h-12 w-12 flex-col items-center justify-center gap-[6px] rounded-full border border-line-strong bg-surface lg:hidden"
             >
-              <span
-                className="h-px w-6 transition-all duration-400"
-                style={{
-                  background: "var(--ink)",
-                  transform: open ? "translateY(5px) rotate(45deg)" : "none",
-                }}
-              />
-              <span
-                className="h-px transition-all duration-400"
-                style={{
-                  background: "var(--ink)",
-                  width: open ? 0 : 24,
-                  opacity: open ? 0 : 1,
-                }}
-              />
-              <span
-                className="h-px w-6 transition-all duration-400"
-                style={{
-                  background: "var(--ink)",
-                  transform: open ? "translateY(-5px) rotate(-45deg)" : "none",
-                }}
-              />
+              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "translate-y-[4px] rotate-45" : ""}`} />
+              <span className={`h-[2px] w-5 bg-ink transition-transform duration-300 ${open ? "-translate-y-[4px] -rotate-45" : ""}`} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile slide-in overlay */}
+      {/* Mobile menu */}
       <div
-        className="fixed inset-0 z-[890] flex flex-col justify-center overflow-hidden px-8 md:hidden"
-        style={{
-          background: "color-mix(in srgb, var(--surface) 97%, transparent)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          transform: open ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1)",
-        }}
+        className={`fixed inset-0 z-[890] overflow-y-auto bg-bg transition-[opacity,visibility] duration-300 lg:hidden ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
       >
-        <nav className="relative flex flex-col gap-2">
-          {LINKS.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="group flex items-center gap-4 border-b py-5"
-              style={{ borderColor: "var(--line)" }}
-            >
-              <span className="font-serif text-sm font-bold" style={{ color: "var(--gold)" }}>
-                0{i + 1}
-              </span>
-              <span className="font-serif text-3xl font-bold" style={{ color: "var(--ink)" }}>
-                {link.label}
-              </span>
-            </Link>
-          ))}
-        </nav>
+        <div className="px-5 pb-10 pt-24 sm:px-6">
+          <p className="index-chip mb-4"><b>—</b> Menu</p>
+          <nav className="flex flex-col" aria-label="Mobile">
+            {LINKS.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="flex items-baseline gap-4 border-b border-line py-4"
+              >
+                <span className="font-serif text-sm text-gold-dark">0{i + 1}</span>
+                <span className="font-serif text-3xl font-semibold text-ink">{link.label}</span>
+              </Link>
+            ))}
+          </nav>
+
+          <p className="index-chip mb-3 mt-9"><b>—</b> Our divisions</p>
+          <div className="flex flex-col gap-3">
+            {VENTURES.map((v) => (
+              <Link
+                key={v.href}
+                href={v.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-2xl border border-line bg-surface px-5 py-4"
+              >
+                <span>
+                  <span className="block font-serif text-xl font-semibold text-ink">{v.label}</span>
+                  <span className="mt-0.5 block text-sm text-ink-muted">{v.sub}</span>
+                </span>
+                <span className="text-gold-dark" aria-hidden>↗</span>
+              </Link>
+            ))}
+          </div>
+
+          <Link href="/#contact" onClick={() => setOpen(false)} className="btn-shimmer mt-8 w-full px-6 py-4 text-[12px]">
+            Get started →
+          </Link>
+          <p className="mt-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-ink-faint">
+            Learn · Create · Celebrate
+          </p>
+        </div>
       </div>
     </>
   );

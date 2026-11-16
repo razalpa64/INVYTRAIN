@@ -1,8 +1,13 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/motion/Reveal";
 import { siteContent } from "@/lib/content";
+
+const VENTURE_BLURB: Record<string, string> = {
+  project: "Software & final-year projects",
+  learning: "1:1 online tutoring & mentorship",
+  event: "Digital invitations & event websites",
+};
 
 export default function Hero({
   eyebrow,
@@ -17,134 +22,112 @@ export default function Hero({
   primaryCTA: string;
   secondaryCTA: string;
 }) {
+  const stats = siteContent.stats.slice(0, 3);
+
   return (
-    <section
-      className="relative isolate min-h-[100svh] overflow-hidden border-b flex flex-col justify-between"
-      style={{ background: "var(--bg)", borderColor: "var(--line)" }}
-    >
-      {/* Background Image - Crisp Blur (6px) */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Hero Background Ambient"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{
-            filter: "blur(6px) saturate(120%) scale(1.04)",
-            opacity: 0.65,
-          }}
-        />
-        {/* Subtle Warm Overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse at center, color-mix(in srgb, var(--bg) 42%, transparent) 0%, color-mix(in srgb, var(--bg) 92%, transparent) 85%)",
-          }}
-        />
-      </div>
+    <section className="paper relative overflow-hidden border-b border-line">
+      <div className="mx-auto max-w-[1400px] px-5 pb-14 pt-28 sm:px-6 md:px-10 md:pb-20 md:pt-40">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
+          {/* Copy */}
+          <div>
+            <Reveal>
+              <p className="index-chip">
+                <b>✦</b> {eyebrow}
+              </p>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1 className="mt-6 font-display text-[clamp(3.2rem,11vw,6.8rem)] text-ink">
+                {titleLines.map((line, i) => (
+                  <span key={line} className="block">
+                    {i === 1 ? <span className="display-italic">{line}</span> : line}
+                  </span>
+                ))}
+              </h1>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="mt-6 max-w-xl text-base leading-[1.85] text-ink-muted md:text-lg">{description}</p>
+            </Reveal>
+            <Reveal delay={220}>
+              <div className="mt-9 flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center">
+                <Link href="#services" className="btn-shimmer px-8 py-4 text-[11px]">
+                  {primaryCTA} ↗
+                </Link>
+                <Link href="#work" className="btn-outline-gold px-8 py-4 text-[11px]">
+                  {secondaryCTA}
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal delay={280}>
+              <dl className="mt-11 flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-7">
+                {stats.map((s) => (
+                  <div key={s.label}>
+                    <dt className="sr-only">{s.label}</dt>
+                    <dd className="font-serif text-3xl font-semibold leading-none text-ink md:text-4xl">{s.value}</dd>
+                    <dd className="mt-1.5 max-w-[11rem] text-[10px] font-bold uppercase leading-relaxed tracking-[0.16em] text-ink-muted">
+                      {s.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
 
-      {/* Ambient Orbs */}
-      <div className="orb orb-gold" style={{ width: 800, height: 800, top: "-15%", right: "10%", opacity: 0.25 }} />
-      <div className="orb orb-gold" style={{ width: 600, height: 600, bottom: "-10%", left: "10%", opacity: 0.18 }} />
-
-      {/* Main Content Area — Centered Editorial Showcase */}
-      <div className="relative z-10 mx-auto flex max-w-[1200px] flex-1 flex-col items-center justify-center text-center px-6 pt-32 pb-16">
-        
-        {/* Eyebrow Badge */}
-        <p className="eyebrow mb-6">
-          <span
-            className="inline-block rounded-full border px-5 py-2 text-[11px] font-bold uppercase tracking-[0.3em] backdrop-blur-sm"
-            style={{
-              borderColor: "rgba(184, 137, 62, 0.4)",
-              color: "var(--gold)",
-              background: "color-mix(in srgb, var(--surface) 88%, transparent)",
-              boxShadow: "0 2px 14px rgba(0,0,0,0.03)",
-            }}
-          >
-            {eyebrow}
-          </span>
-        </p>
-
-        {/* Hero Title */}
-        <h1
-          className="font-display font-serif text-[clamp(3.6rem,13vw,6.5rem)] leading-[0.88] tracking-[-0.04em] sm:text-[6.5rem] md:text-[8rem] lg:text-[9.5rem]"
-          style={{ color: "var(--ink)" }}
-        >
-          {titleLines.map((line, i) => (
-            <span key={line} className="block">
-              <span
-                className={i === 1 ? "text-glow-gold" : ""}
-                style={{
-                  color: i === 1 ? "var(--gold)" : "var(--ink)",
-                }}
-              >
-                {line}
-              </span>
-            </span>
-          ))}
-        </h1>
-
-        {/* Description */}
-        <p
-          className="mt-8 max-w-2xl text-base md:text-lg leading-[1.8] font-medium"
-          style={{ color: "var(--ink-muted)" }}
-        >
-          {description}
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
-          <Link
-            href="#services"
-            className="btn-shimmer px-9 py-4.5 text-[11px] font-bold tracking-[0.22em]"
-          >
-            {primaryCTA} &nbsp;↗
-          </Link>
-          <Link
-            href="#work"
-            className="cta-link text-[11px] font-bold uppercase tracking-[0.22em] px-4 py-2"
-            style={{ color: "var(--ink)" }}
-          >
-            {secondaryCTA}
-            <span className="arrow" style={{ color: "var(--gold)" }}>→</span>
-            <span className="underline-track" />
-            <span className="underline-fill" />
-          </Link>
+          {/* Logo panel — the new mark, presented on charcoal as designed */}
+          <Reveal variant="image" delay={140}>
+            <div className="photo-frame overflow-hidden rounded-[2rem]">
+              <div className="relative flex aspect-[4/4.4] flex-col items-center justify-center overflow-hidden bg-coal px-8 text-center min-[480px]:aspect-[4/3.4] lg:aspect-[4/4.2]">
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-70"
+                  style={{ background: "radial-gradient(ellipse 70% 55% at 50% 38%, rgba(196,154,72,0.22), transparent 70%)" }}
+                />
+                <Image
+                  src="/images/logo-full.png"
+                  alt="Invytra — Build a brighter tomorrow"
+                  width={916}
+                  height={718}
+                  priority
+                  className="relative w-[78%] max-w-[420px] [animation:float-y_7s_ease-in-out_infinite]"
+                />
+                <p className="relative mt-2 max-w-[26ch] text-[11px] font-bold uppercase leading-loose tracking-[0.24em] text-coal-muted">
+                  One venture · Three crafts
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
 
-      </div>
-
-      {/* Bottom Venture Bar — Horizontal 3-Column Showcase */}
-      <div className="relative z-10 border-t" style={{ borderColor: "var(--line)", background: "color-mix(in srgb, var(--surface) 72%, transparent)", backdropFilter: "blur(10px)" }}>
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x" style={{ borderColor: "var(--line)" }}>
-          {siteContent.ventures.map((v) => (
-            <Link
-              key={v.id}
-              href={v.link}
-              className="group flex items-center justify-between p-6 md:p-8 transition-all duration-300 hover:bg-[rgba(184,137,62,0.04)]"
-            >
-              <div className="flex items-center gap-4">
-                <span
-                  className="font-serif text-sm font-bold"
-                  style={{ color: "var(--gold)" }}
-                >
-                  {v.number}
-                </span>
-                <div>
-                  <p className="font-serif text-lg font-bold leading-none" style={{ color: "var(--ink)" }}>
-                    {v.name}
-                  </p>
-                  <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.15em]" style={{ color: "var(--gold)" }}>
-                    {v.slug === "project" ? "Software & Capstones" : v.slug === "learning" ? "1:1 STEM Mentorship" : "Digital Invitations"}
-                  </p>
+        {/* Venture photo strip */}
+        <div className="mt-14 grid gap-4 sm:grid-cols-3 md:mt-20">
+          {siteContent.ventures.map((v, i) => (
+            <Reveal key={v.id} delay={i * 90}>
+              <Link
+                href={`/${v.slug}`}
+                className="group relative block overflow-hidden rounded-3xl bg-coal"
+                aria-label={`${v.name} — ${VENTURE_BLURB[v.slug]}`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden sm:aspect-[4/3] lg:aspect-[16/10]">
+                  <Image
+                    src={`/images/${v.slug}-photo.jpg`}
+                    alt={v.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className="object-cover opacity-90 transition duration-700 group-hover:scale-[1.05] group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
                 </div>
-              </div>
-              <span className="text-sm font-bold transition-transform duration-300 group-hover:translate-x-1" style={{ color: "var(--gold)" }}>
-                ↗
-              </span>
-            </Link>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5">
+                  <div>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#E9C979]">
+                      {v.number} · {v.name}
+                    </p>
+                    <p className="mt-1 font-serif text-xl font-semibold leading-tight text-white">{VENTURE_BLURB[v.slug]}</p>
+                  </div>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur transition group-hover:bg-[#C49A48]" aria-hidden>
+                    ↗
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>

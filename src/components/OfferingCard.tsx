@@ -6,7 +6,7 @@ import type { Offering } from "@/lib/types";
 
 export default function OfferingCard({ offering }: { offering: Offering }) {
   return (
-    <article className="group flex flex-col overflow-hidden border border-line bg-surface/40 transition-colors hover:border-gold/60">
+    <article className="interactive-card group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface">
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-strong">
         {offering.image ? (
           <Image

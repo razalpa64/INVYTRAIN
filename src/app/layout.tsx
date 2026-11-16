@@ -3,11 +3,9 @@ import type { ReactNode } from "react";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/chrome/SmoothScrollProvider";
-import CustomCursor from "@/components/chrome/CustomCursor";
 import ScrollProgress from "@/components/chrome/ScrollProgress";
 import ScrollEffects from "@/components/chrome/ScrollEffects";
 import BackToTop from "@/components/chrome/BackToTop";
-import IntroLoader from "@/components/IntroLoader";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -73,11 +71,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="bg-bg text-ink antialiased" suppressHydrationWarning>
         <SmoothScrollProvider>
-          <IntroLoader />
           <ScrollProgress />
           <ScrollEffects />
           <BackToTop />
-          <CustomCursor />
           {children}
         </SmoothScrollProvider>
       </body>
