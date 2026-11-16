@@ -45,7 +45,7 @@ export default function Footer({ config }: { config: SiteConfigData }) {
                 alt="Invytra — Build a brighter tomorrow"
                 width={916}
                 height={718}
-                className="w-44 md:w-52"
+                className="w-32 md:w-36"
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-[1.8] text-coal-muted">{config.brand.tagline}</p>
