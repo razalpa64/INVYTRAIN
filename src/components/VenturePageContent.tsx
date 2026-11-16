@@ -84,7 +84,7 @@ export default async function VenturePageContent({ slug }: { slug: VentureSlug }
               <Reveal variant="image" delay={140}>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.6rem] bg-bg-2 lg:aspect-[4/3.4]">
                   <Image
-                    src={`/images/${slug}-photo.jpg`}
+                    src={`/images/${slug}-new.jpg`}
                     alt={venture.name}
                     fill
                     priority
