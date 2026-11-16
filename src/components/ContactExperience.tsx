@@ -122,7 +122,7 @@ export default function ContactExperience({ config }: { config: SiteConfigData }
                   type="button"
                   onClick={() => { setSelected(choice.key); setValues({}); }}
                   data-cursor="SELECT"
-                  className="interactive-card group relative flex min-h-40 w-full flex-col justify-center overflow-hidden rounded-2xl p-6 text-left sm:p-8"
+                  className="interactive-card group relative flex min-h-[7.5rem] w-full flex-col justify-center overflow-hidden rounded-2xl p-5 text-left sm:p-8 md:min-h-40"
                   style={{
                     background: "var(--surface)",
                     border: `1px solid ${isSelected ? choice.accent : "var(--line-strong)"}`,

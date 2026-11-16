@@ -31,7 +31,7 @@ export default function Hero({
   const stats = siteContent.stats.slice(0, 3);
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-coal text-white">
+    <section className="relative flex min-h-[96svh] flex-col overflow-hidden bg-coal text-white md:min-h-[100svh]">
       {/* Backdrop */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden>
         <Image
@@ -47,7 +47,7 @@ export default function Hero({
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-5 pb-16 pt-36 sm:px-6 md:px-10 md:pt-44">
+      <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-5 pb-12 pt-32 sm:px-6 md:px-10 md:pb-16 md:pt-44">
         <div className="max-w-3xl">
           <Reveal>
             <p className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#EFD9A0] backdrop-blur">
@@ -56,7 +56,7 @@ export default function Hero({
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-7 font-display text-[clamp(3.4rem,11vw,7.2rem)] leading-[0.94] text-white">
+            <h1 className="mt-6 font-display text-[clamp(2.85rem,12.5vw,7.2rem)] leading-[0.96] text-white md:mt-7">
               {titleLines.map((line, i) => (
                 <span key={line} className="block">
                   {i === 1 ? (
@@ -69,7 +69,7 @@ export default function Hero({
             </h1>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-7 max-w-xl text-base leading-[1.85] text-white/80 md:text-lg">{description}</p>
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.8] text-white/80 md:mt-7 md:text-lg md:leading-[1.85]">{description}</p>
           </Reveal>
           <Reveal delay={230}>
             <div className="mt-9 flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap">
@@ -88,16 +88,16 @@ export default function Hero({
             </div>
           </Reveal>
           <Reveal delay={300}>
-            <dl className="mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/20 pt-7">
+            <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-white/20 pt-6 md:mt-12 md:flex md:flex-wrap md:gap-x-10 md:gap-y-5 md:pt-7">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <dd className="font-serif text-3xl font-semibold leading-none text-white md:text-4xl">{s.value}</dd>
-                  <dt className="mt-1.5 max-w-[12rem] text-[10px] font-bold uppercase leading-relaxed tracking-[0.16em] text-white/60">
+                  <dd className="font-serif text-[1.65rem] font-semibold leading-none text-white md:text-4xl">{s.value}</dd>
+                  <dt className="mt-1.5 max-w-[12rem] text-[9px] font-bold uppercase leading-relaxed tracking-[0.13em] text-white/60 md:text-[10px] md:tracking-[0.16em]">
                     {s.label}
                   </dt>
                 </div>
               ))}
-              <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/70">
+              <div className="col-span-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white/70 md:col-span-1">
                 <span className="text-[#E9C979]">★★★★★</span> from students, parents & couples
               </div>
             </dl>
@@ -106,12 +106,12 @@ export default function Hero({
 
         {/* Division quick-links */}
         <Reveal delay={360}>
-          <div className="mt-14 grid gap-3 pb-4 sm:grid-cols-3">
+          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:snap-none sm:grid-cols-3 sm:overflow-visible sm:px-0 md:mt-14">
             {siteContent.ventures.map((v) => (
               <Link
                 key={v.id}
                 href={`/${v.slug}`}
-                className="group flex items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/[0.07] px-5 py-4 backdrop-blur-md transition hover:border-[#C49A48]/70 hover:bg-white/[0.12]"
+                className="group flex min-w-[248px] snap-start items-center justify-between gap-3 rounded-2xl border border-white/15 bg-white/[0.07] px-5 py-4 backdrop-blur-md transition hover:border-[#C49A48]/70 hover:bg-white/[0.12] sm:min-w-0"
               >
                 <span>
                   <span className="block text-[9px] font-extrabold uppercase tracking-[0.24em] text-[#E9C979]">

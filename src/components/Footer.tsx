@@ -35,10 +35,10 @@ const FOOTER_LINKS = [
 export default function Footer({ config }: { config: SiteConfigData }) {
   return (
     <footer className="bg-coal text-coal-ink">
-      <div className="mx-auto max-w-[1400px] px-5 pb-28 pt-14 sm:px-6 md:px-10 md:pb-12 md:pt-20">
-        <div className="grid gap-12 border-b border-coal-line pb-12 md:grid-cols-12">
+      <div className="mx-auto max-w-[1400px] px-5 pb-24 pt-12 sm:px-6 md:px-10 md:pb-12 md:pt-20">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 border-b border-coal-line pb-10 md:grid-cols-12 md:pb-12">
           {/* Brand — full logo lockup, transparent on charcoal */}
-          <div className="md:col-span-4">
+          <div className="col-span-2 md:col-span-4">
             <Link href="/" className="inline-block" aria-label="Invytra — home">
               <Image
                 src="/images/logo-full.png"
@@ -71,7 +71,7 @@ export default function Footer({ config }: { config: SiteConfigData }) {
           ))}
 
           {/* Connect */}
-          <div className="md:col-span-2">
+          <div className="col-span-2 min-[480px]:col-span-1 md:col-span-2">
             <p className="mb-5 text-[10px] font-extrabold uppercase tracking-[0.26em] text-[#C49A48]">Connect</p>
             <ul className="space-y-3 text-sm text-coal-muted">
               <li>
@@ -93,7 +93,7 @@ export default function Footer({ config }: { config: SiteConfigData }) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-7 text-[11px] font-semibold uppercase tracking-[0.18em] text-coal-muted md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-center gap-2.5 pt-7 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-coal-muted md:flex-row md:items-center md:justify-between md:text-left">
           <span suppressHydrationWarning>© {new Date().getFullYear()} Invytra. All rights reserved.</span>
           <span className="font-serif normal-case tracking-[0.14em] text-[#C49A48]">Build a brighter tomorrow.</span>
         </div>

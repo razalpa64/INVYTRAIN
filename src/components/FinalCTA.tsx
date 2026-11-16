@@ -11,7 +11,7 @@ export default function FinalCTA() {
         className="pointer-events-none absolute inset-0"
         style={{ background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(196,154,72,0.16), transparent 70%)" }}
       />
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-5 py-20 sm:px-6 md:py-28">
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center px-5 py-16 sm:px-6 md:py-28">
         <Reveal>
           <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[#C49A48]">The next step</p>
         </Reveal>
