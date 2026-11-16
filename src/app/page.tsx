@@ -11,7 +11,9 @@ import ContactExperience from "@/components/ContactExperience";
 import HomeFaq from "@/components/HomeFaq";
 import FinalCTA from "@/components/FinalCTA";
 import AdUnit from "@/components/AdUnit";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import Footer from "@/components/Footer";
+import { buildWhatsappLink } from "@/lib/whatsapp";
 import { getFeaturedWork, getSiteConfig, getStats, getTestimonials } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -57,6 +59,7 @@ export default async function HomePage() {
         <FinalCTA />
       </main>
       <Footer config={config} />
+      <MobileCtaBar whatsappHref={buildWhatsappLink(config, "Hello Invytra, I would like to know more about your services.")} />
     </>
   );
 }

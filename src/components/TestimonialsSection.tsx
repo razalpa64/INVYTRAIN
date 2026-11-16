@@ -1,157 +1,53 @@
 import Reveal from "./motion/Reveal";
-import Image from "next/image";
 import type { Testimonial } from "@/lib/types";
-import ReviewForm from "./ReviewForm";
 
+/**
+ * Reviews as a calm, readable grid — readable on a phone in one glance,
+ * and each review appears exactly once in the HTML for crawlers.
+ * (Replaces the dual-direction marquee, which duplicated every review
+ * six times and was unreadable on mobile.)
+ */
 export default function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
   if (!testimonials.length) return null;
-
-  // Duplicate for seamless marquee
-  const all = [...testimonials, ...testimonials, ...testimonials];
+  const shown = testimonials.slice(0, 6);
 
   return (
-    <section
-      id="reviews"
-      className="relative overflow-hidden"
-      style={{
-        borderTop: "1px solid var(--line)",
-        background: "var(--surface)",
-      }}
-    >
-      {/* Ambient orb */}
-      <div
-        className="orb orb-gold pointer-events-none absolute"
-        style={{ width: 700, height: 400, top: "30%", left: "50%", transform: "translateX(-50%)", opacity: 0.07 }}
-      />
-
-      {/* Top gradient border */}
-      <div
-        className="absolute inset-x-0 top-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, var(--gold), var(--purple), transparent)" }}
-      />
-
-      <div className="relative mx-auto max-w-[1400px] px-5 pb-0 pt-16 sm:px-6 md:px-10 md:pt-32">
-        <div className="pointer-events-none absolute right-10 top-20 hidden h-24 w-36 overflow-hidden rounded-xl opacity-80 md:block">
-          <Image src="/images/event-visual.svg" alt="" fill sizes="144px" className="object-cover" />
-        </div>
-        {/* Header */}
-        <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between md:gap-8">
+    <section id="reviews" className="border-b border-line bg-bg-2">
+      <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6 md:mb-12">
           <div>
             <Reveal>
-              <p className="eyebrow mb-4">Client reviews</p>
+              <p className="index-chip"><b>04</b> Client reviews</p>
             </Reveal>
-            <Reveal delay={80}>
-              <h2
-                className="font-serif leading-[0.9]"
-                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", color: "var(--ink)" }}
-              >
-                <span className="block">Kind words.</span>
-                <span className="block" style={{ color: "var(--gold)" }}>Real outcomes.</span>
+            <Reveal delay={70}>
+              <h2 className="mt-4 font-display text-[clamp(2.4rem,6vw,4.2rem)] text-ink">
+                Kind words. <span className="display-italic">Real outcomes.</span>
               </h2>
             </Reveal>
           </div>
-          <Reveal delay={150}>
-            <div
-              className="relative z-10 mt-3 w-full max-w-[14rem] self-start rounded-2xl p-5 md:mt-20 md:max-w-none md:self-auto md:p-6 md:text-right"
-              style={{
-                background: "rgba(212,168,83,0.06)",
-                border: "1px solid rgba(212,168,83,0.2)",
-              }}
-            >
-              <p className="text-2xl tracking-[0.16em]" style={{ color: "var(--gold)" }}>★★★★★</p>
-              <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--ink-muted)" }}>
-                Built on trust
-              </p>
-              <p className="mt-1 font-serif text-3xl" style={{ color: "var(--gold)" }}>
-                {testimonials.length}+
-              </p>
-              <p className="text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--ink-muted)" }}>
-                reviews
-              </p>
+          <Reveal delay={120}>
+            <div className="flex items-center gap-3">
+              <span className="text-xl tracking-[0.2em] text-gold-dark" aria-label="Rated 5 out of 5 stars">★★★★★</span>
+              <span className="text-sm font-semibold text-ink-muted">from students, parents & couples</span>
             </div>
           </Reveal>
         </div>
-      </div>
 
-      {/* Marquee testimonials — full width overflow */}
-      <div className="relative pb-16 pt-2">
-        {/* Row 1 */}
-        <div className="overflow-hidden py-3">
-          <div className="marquee-track gap-5 py-1">
-            {all.map((review, i) => (
-              <figure
-                key={`r1-${review.id}-${i}`}
-                aria-hidden={i >= testimonials.length || undefined}
-                className="group flex w-[280px] sm:w-[340px] flex-shrink-0 flex-col rounded-2xl p-5 sm:p-7"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid var(--line)",
-                  backdropFilter: "blur(10px)",
-                  transition: "border-color 0.3s ease, transform 0.3s ease",
-                }}
-              >
-                <div className="text-sm tracking-[0.12em]" style={{ color: "var(--gold)" }}>★★★★★</div>
-                <blockquote
-                  className="mt-5 font-serif text-xl leading-[1.3]"
-                  style={{ color: "var(--ink)" }}
-                >
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {shown.map((review, i) => (
+            <Reveal key={review.id} delay={i * 70} className="h-full">
+              <figure className="flex h-full flex-col rounded-3xl border border-line bg-surface p-6 md:p-7">
+                <div className="text-sm tracking-[0.18em] text-gold-dark" aria-hidden>★★★★★</div>
+                <blockquote className="mt-4 font-serif text-[1.35rem] font-medium leading-[1.35] text-ink">
                   &ldquo;{review.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-auto border-t pt-5" style={{ borderColor: "var(--line)" }}>
-                  <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>{review.name}</p>
-                  <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
-                    {review.category}
-                  </p>
+                <figcaption className="mt-6 border-t border-line pt-5">
+                  <p className="text-sm font-bold text-ink">{review.name}</p>
+                  <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-dark">{review.category}</p>
                 </figcaption>
               </figure>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 2 — reversed direction */}
-        {testimonials.length > 2 && (
-          <div className="overflow-hidden py-3" aria-hidden="true">
-            <div className="marquee-track-rev gap-5 py-1">
-              {[...all].reverse().map((review, i) => (
-                <figure
-                  key={`r2-${review.id}-${i}`}
-                  className="group flex w-[280px] sm:w-[340px] flex-shrink-0 flex-col rounded-2xl p-5 sm:p-7"
-                  style={{
-                    background: "rgba(123,94,167,0.04)",
-                    border: "1px solid rgba(123,94,167,0.12)",
-                    backdropFilter: "blur(10px)",
-                  }}
-                >
-                  <div className="text-sm tracking-[0.12em]" style={{ color: "var(--purple-light)" }}>★★★★★</div>
-                  <blockquote
-                    className="mt-5 font-serif text-xl leading-[1.3]"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    &ldquo;{review.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-auto border-t pt-5" style={{ borderColor: "var(--line)" }}>
-                    <p className="text-sm font-bold" style={{ color: "var(--ink)" }}>{review.name}</p>
-                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em]" style={{ color: "var(--purple-light)" }}>
-                      {review.category}
-                    </p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Review form */}
-      <div className="mx-auto max-w-[1400px] px-5 pb-20 md:px-10 md:pb-28">
-        <div
-          className="rounded-2xl p-6 md:p-10"
-          style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid var(--line-strong)",
-          }}
-        >
-          <ReviewForm />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
