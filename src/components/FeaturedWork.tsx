@@ -20,9 +20,9 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
   }, [items, tab]);
 
   return (
-    <section id="work" className="border-b border-line bg-bg">
+    <section id="work" className="border-b border-line-strong bg-bg">
       <div className="mx-auto max-w-[1400px] px-5 py-16 sm:px-6 md:px-10 md:py-24">
-        <div className="mb-9 flex flex-wrap items-end justify-between gap-6">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-8 md:mb-14">
           <div>
             <Reveal>
               <p className="index-chip"><b>02</b> Selected work</p>
@@ -42,6 +42,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
         </div>
 
         <Reveal delay={140}>
+          {/* Utility Agency Minimalist Tabs */}
           <div className="mb-8 flex flex-wrap gap-2" role="tablist" aria-label="Filter work by division">
             {TABS.map((t) => {
               const active = tab === t;
@@ -52,10 +53,10 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setTab(t)}
-                  className={`min-h-[44px] rounded-full border px-5 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.16em] transition ${
+                  className={`min-h-[44px] rounded-full border px-5 py-2.5 eyebrow font-medium transition ${
                     active
                       ? "border-coal bg-coal text-coal-ink"
-                      : "border-line-strong bg-surface text-ink hover:border-gold-dark hover:text-gold-dark"
+                      : "border-line-strong bg-surface text-ink hover:border-gold-light hover:text-gold-light"
                   }`}
                 >
                   {t === "ALL" ? "All work" : t.charAt(0) + t.slice(1).toLowerCase()}
@@ -65,11 +66,12 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
           </div>
         </Reveal>
 
-        <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Utility Agency Minimalist Grid — premium spacing */}
+        <div key={tab} className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.length ? (
             filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
           ) : (
-            <p className="col-span-full py-16 text-center text-sm font-bold uppercase tracking-[0.2em] text-ink-muted">
+            <p className="col-span-full py-16 text-center eyebrow font-medium uppercase tracking-[0.2em] text-ink-muted">
               More work coming soon.
             </p>
           )}
