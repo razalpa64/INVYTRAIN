@@ -28,7 +28,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
               <p className="index-chip"><b>02</b> Selected work</p>
             </Reveal>
             <Reveal delay={70}>
-              <h2 className="mt-4 max-w-[16ch] font-display text-[clamp(2.4rem,6vw,4.2rem)] text-ink">
+              <h2 className="mt-4 max-w-[24ch] font-display text-[clamp(2.4rem,6vw,4.2rem)] text-ink">
                 Work with <span className="display-italic">a point of view</span>
               </h2>
             </Reveal>
@@ -65,7 +65,7 @@ export default function FeaturedWork({ items }: { items: Offering[] }) {
           </div>
         </Reveal>
 
-        <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:auto-rows-[240px]">
+        <div key={tab} className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.length ? (
             filtered.map((item, i) => <FeaturedItem key={item.id} offering={item} index={i} />)
           ) : (

@@ -33,10 +33,17 @@ export default function Nav({ brandName }: { brandName: string }) {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 24);
-      // Hide while scrolling down (past the hero fold), return on scroll up —
-      // the bar should never sit on top of what you're reading.
-      setHidden(y > 160 && y > lastY + 4);
-      if (y < lastY - 4 || y <= 160) setHidden(false);
+      // Hide/show only on deliberate travel — small deltas (smooth-scroll
+      // easing, rubber-banding) must not toggle the bar, that reads as
+      // flicker. Hide: 12px+ downward beyond 420px. Show: 6px+ upward,
+      // or anywhere near the top.
+      if (y <= 420) {
+        setHidden(false);
+      } else if (y - lastY > 12) {
+        setHidden(true);
+      } else if (lastY - y > 6) {
+        setHidden(false);
+      }
       lastY = y;
     };
     onScroll();

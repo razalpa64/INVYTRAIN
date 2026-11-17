@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -23,19 +23,18 @@ type AdUnitProps = {
 /**
  * Manual Google AdSense display ad unit (responsive).
  *
- * The adsbygoogle.js loader itself is included site-wide in the root
- * layout <head>; this component renders the <ins> placement and pushes
- * it onto the queue once mounted. Ads only fill after the site is
- * approved ("Ready") in AdSense — until then this reserves a tidy,
- * labelled slot that simply stays blank.
+ * The section renders NOTHING until Google actually fills the unit —
+ * an unfilled slot (site not yet approved, no demand, ad blocker)
+ * used to reserve a big dashed empty box that looked like a broken
+ * section. We watch the <ins> for AdSense's filled status/height and
+ * only then reveal the labelled container.
  */
 export default function AdUnit({ slot = DISPLAY_AD_SLOT, className = "" }: AdUnitProps) {
   const insRef = useRef<HTMLModElement | null>(null);
+  const [filled, setFilled] = useState(false);
 
   useEffect(() => {
     const el = insRef.current;
-    // Guard against double-push (React StrictMode / remounts), which
-    // makes AdSense throw "already have ads in them" errors.
     if (!el || el.dataset.adLoaded === "true") return;
     el.dataset.adLoaded = "true";
     try {
@@ -43,12 +42,33 @@ export default function AdUnit({ slot = DISPLAY_AD_SLOT, className = "" }: AdUni
     } catch {
       // AdSense script blocked (e.g. ad blocker) — fail silently.
     }
+
+    // Reveal only once AdSense marks the unit filled / gives it height.
+    const started = Date.now();
+    const timer = window.setInterval(() => {
+      const node = insRef.current;
+      if (!node) return;
+      const status = node.getAttribute("data-adsbygoogle-status");
+      if (status === "done" || node.offsetHeight > 40) {
+        setFilled(true);
+        window.clearInterval(timer);
+      } else if (Date.now() - started > 6000) {
+        window.clearInterval(timer); // unfilled — stay invisible
+      }
+    }, 400);
+    return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <section aria-label="Advertisement" className={`mx-auto w-full max-w-[1400px] px-6 py-10 md:px-10 ${className}`}>
-      <p className="mb-3 text-center text-[10px] uppercase tracking-[0.3em] text-ink-faint">Advertisement</p>
-      <div className="mx-auto min-h-[100px] w-full max-w-[970px] rounded-2xl border border-dashed border-line bg-surface-2/60 px-2 py-2">
+    <section
+      aria-label="Advertisement"
+      className={`mx-auto w-full max-w-[1400px] px-6 md:px-10 ${filled ? "py-10" : "h-0 overflow-hidden py-0"} ${className}`}
+      aria-hidden={!filled || undefined}
+    >
+      {filled ? (
+        <p className="mb-3 text-center text-[10px] uppercase tracking-[0.3em] text-ink-faint">Advertisement</p>
+      ) : null}
+      <div className="mx-auto w-full max-w-[970px]">
         <ins
           ref={insRef}
           className="adsbygoogle block"
