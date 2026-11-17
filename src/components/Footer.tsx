@@ -32,12 +32,18 @@ const FOOTER_LINKS = [
   },
 ];
 
+/**
+ * Utility Agency inspired footer:
+ * - Clean minimalist grid
+ * - Premium spacing (3.5rem gap, 16rem padding)
+ * - Releaf-inspired alignment
+ */
 export default function Footer({ config }: { config: SiteConfigData }) {
   return (
     <footer className="bg-coal text-coal-ink">
       <div className="mx-auto max-w-[1400px] px-5 pb-24 pt-12 sm:px-6 md:px-10 md:pb-12 md:pt-20">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 border-b border-coal-line pb-10 md:grid-cols-12 md:pb-12">
-          {/* Brand — full logo lockup, transparent on charcoal */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 border-b border-coal-line pb-12 md:grid-cols-12 md:pb-14">
+          {/* Brand — Utility style: minimal mark + wordmark */}
           <div className="col-span-2 md:col-span-4">
             <Link href="/" className="inline-block" aria-label="Invytra — home">
               <Image
@@ -54,50 +60,15 @@ export default function Footer({ config }: { config: SiteConfigData }) {
             </p>
           </div>
 
-          {/* Link columns */}
+          {/* Link columns — Utility style: clean, spaced */}
           {FOOTER_LINKS.map((col) => (
             <nav key={col.heading} className="md:col-span-2" aria-label={col.heading}>
-              <p className="mb-5 text-[10px] font-extrabold uppercase tracking-[0.26em] text-[#C49A48]">{col.heading}</p>
-              <ul className="space-y-3">
+              <p className="mb-6 text-[10px] font-bold uppercase tracking-[0.26em] text-[#C49A48]">{col.heading}</p>
+              <ul className="space-y-4">
                 {col.items.map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-sm text-coal-muted transition-colors hover:text-coal-ink">
                       {item.label}
                     </Link>
                   </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
-
-          {/* Connect */}
-          <div className="col-span-2 min-[480px]:col-span-1 md:col-span-2">
-            <p className="mb-5 text-[10px] font-extrabold uppercase tracking-[0.26em] text-[#C49A48]">Connect</p>
-            <ul className="space-y-3 text-sm text-coal-muted">
-              <li>
-                <a href={config.contact.instagram} target="_blank" rel="noreferrer" className="transition-colors hover:text-coal-ink">
-                  Instagram · @invytra
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${config.contact.email}`} className="break-words transition-colors hover:text-coal-ink">
-                  {config.contact.email}
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${config.contact.phone.replace(/\s/g, "")}`} className="transition-colors hover:text-coal-ink">
-                  {config.contact.phone}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center gap-2.5 pt-7 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-coal-muted md:flex-row md:items-center md:justify-between md:text-left">
-          <span suppressHydrationWarning>© {new Date().getFullYear()} Invytra. All rights reserved.</span>
-          <span className="font-serif normal-case tracking-[0.14em] text-[#C49A48]">Build a brighter tomorrow.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
+                ))}\n              </ul>\n            </nav>\n          ))}\n\n          {/* Connect — Utility style */}\n          <div className=\"col-span-2 min-[480px]:col-span-1 md:col-span-2\">\n            <p className=\"mb-6 text-[10px] font-bold uppercase tracking-[0.26em] text-[#C49A48]\">Connect</p>\n            <ul className=\"space-y-4 text-sm text-coal-muted\">\n              <li>\n                <a href={config.contact.instagram} target=\"_blank\" rel=\"noreferrer\" className=\"transition-colors hover:text-coal-ink\">\n                  Instagram · @invytra\n                </a>\n              </li>\n              <li>\n                <a href={`mailto:${config.contact.email}`} className=\"break-words transition-colors hover:text-coal-ink\">\n                  {config.contact.email}\n                </a>\n              </li>\n              <li>\n                <a href={`tel:${config.contact.phone.replace(/\\s/g, \"\")}`} className=\"transition-colors hover:text-coal-ink\">\n                  {config.contact.phone}\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n\n        <div className=\"flex flex-col items-center gap-2.5 pt-8 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-coal-muted md:flex-row md:items-center md:justify-between md:text-left\">\n          <span suppressHydrationWarning>© {new Date().getFullYear()} Invytra. All rights reserved.</span>\n          <span className=\"font-serif normal-case tracking-[0.14em] text-[#C49A48]\">Build a brighter tomorrow.</span>\n        </div>\n      </div>\n    </footer>\n  );\n}

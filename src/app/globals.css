@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 /* =========================================================================
-   INVYTRA — "Porcelain Editorial" design system (Nov 2026 redesign)
-   Inspired by the ribbon logo: luminous ivory + silver on deep charcoal,
-   lit by a single warm gold glow. Light-first, gold used sparingly,
-   charcoal reserved for framing bands (nav chip, stats, CTA, footer).
+   INVYTRA — Utility Agency Redesign (Nov 2026)
+   Inspired by Utility Agency (utility.agency) + Releaf® design (image-12.png)
+   Clean, minimalist, premium senior-UI/UX, no crowding.
    ========================================================================= */
 :root {
   /* Porcelain & warm paper */
@@ -68,12 +67,6 @@
   --color-coal-ink:       var(--coal-ink);
   --color-coal-muted:     var(--coal-muted);
   --color-coal-line:      var(--coal-line);
-
-  /* v4 type system: Space Grotesk carries all display type (the old
-     serif is retired to italic accents only, via .display-italic). */
-  --font-serif: var(--font-space), "Space Grotesk", var(--font-manrope), sans-serif;
-  --font-accent: var(--font-cormorant), "Cormorant Garamond", serif;
-  --font-sans:  var(--font-manrope), "Manrope", "Inter", system-ui, sans-serif;
 }
 
 /* =========================================================================
@@ -118,19 +111,19 @@ a, button { cursor: pointer; }
 }
 
 /* =========================================================================
-   Keyframes
+   Keyframes (Releaf-inspired folding/origami kinetic backdrop)
    ========================================================================= */
-@keyframes hero-drift {
-  from { transform: scale(1.14) translate(0, 0); }
-  to   { transform: scale(1.26) translate(-1.6%, -2.2%); }
+@keyframes folding-in {
+  0%   { transform: scale(1.02) translate(0, 0) rotate(0deg); opacity: 0.08; }
+  50%  { transform: scale(1.08) translate(-0.5%, -1%) rotate(0.5deg); opacity: 0.12; }
+  100% { transform: scale(1.02) translate(0, 0) rotate(0deg); opacity: 0.08; }
 }
-/* Cinematic hero backdrop: slow Ken Burns drift + soft blur, so a still
-   photograph breathes like video footage behind the headline. */
-.hero-bg {
-  animation: hero-drift 30s ease-in-out infinite alternate;
-  filter: blur(2.5px) saturate(1.06) contrast(1.03);
+.hero-bg-folding {
+  animation: folding-in 40s ease-in-out infinite alternate;
+  filter: blur(1.5px) saturate(1.04) contrast(1.02);
   will-change: transform;
 }
+
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -167,7 +160,7 @@ a, button { cursor: pointer; }
 .gold-draw.is-visible::after { transform: scaleX(1); }
 
 /* =========================================================================
-   Typography helpers
+   Typography helpers (Utility Agency style: clean, minimal)
    ========================================================================= */
 .font-display {
   font-family: var(--font-space), "Space Grotesk", sans-serif;
@@ -206,7 +199,7 @@ a, button { cursor: pointer; }
 .index-chip b { font-family: var(--font-serif); font-size: 1rem; color: var(--gold-dark); letter-spacing: 0; }
 
 /* =========================================================================
-   Links & buttons (names kept from previous system, restyled)
+   Links & buttons (Utility Agency style: minimalist, clean)
    ========================================================================= */
 .cta-link {
   position: relative; display: inline-flex; align-items: center; gap: 0.5rem;
@@ -248,7 +241,6 @@ a, button { cursor: pointer; }
 }
 .btn-outline-gold:hover { border-color: var(--gold-dark); color: var(--gold-dark); transform: translateY(-2px); }
 
-/* WhatsApp action (used in sticky mobile bar & CTAs) */
 .btn-whatsapp {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
   background: #1FA855; color: #FFF; border-radius: 999px;
@@ -258,9 +250,7 @@ a, button { cursor: pointer; }
 }
 .btn-whatsapp:hover { background: #178A45; transform: translateY(-2px); }
 
-/* Unified photographic grade — applied to EVERY photo site-wide so
-   images from different shoots read as one matched set: gently warmed,
-   slightly desaturated, lifted contrast (matches the logo's palette). */
+/* Unified photographic grade */
 .img-warm { filter: sepia(0.24) saturate(0.85) contrast(1.06) brightness(0.99); }
 
 /* Framed photo treatment — offset charcoal keyline, editorial */
@@ -273,7 +263,7 @@ a, button { cursor: pointer; }
 }
 .photo-frame > * { position: relative; z-index: 1; }
 
-/* Hover polish — hover-capable devices only (no sticky touch states) */
+/* Hover polish */
 @media (hover: hover) and (pointer: fine) {
   .interactive-card {
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.35s ease;
@@ -287,30 +277,30 @@ a, button { cursor: pointer; }
   .image-zoom:hover img { transform: scale(1.05); }
 }
 
-/* Marquee (kept for any legacy strips) */
+/* Marquee */
 .marquee-track { display: flex; width: max-content; animation: marquee 52s linear infinite; }
 .marquee-track-rev { display: flex; width: max-content; animation: marquee-rev 48s linear infinite; }
 
-/* Orbs — deprecated in the new design, kept harmless for legacy markup */
+/* Orbs — deprecated */
 .orb { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(90px); }
 .orb-gold { background: radial-gradient(circle, rgba(196,154,72,0.20), transparent 70%); }
 .orb-project { background: radial-gradient(circle, rgba(156,91,51,0.16), transparent 70%); }
 .orb-learning { background: radial-gradient(circle, rgba(47,107,92,0.14), transparent 70%); }
 .orb-event { background: radial-gradient(circle, rgba(196,154,72,0.18), transparent 70%); }
 .text-glow-gold { text-shadow: none; }
-.card-glow { box-shadow: 0 1px 0 var(--line), 0 18px 40px rgba(27,25,21,0.07); }
+.card-glow { box-shadow: 0 1px 0 var(--line), 0 18px 40px rgba(27, 25, 21, 0.07); }
 
 .section-divider { width: 100%; height: 1px; background: var(--line); }
 
 /* =========================================================================
-   Reduced motion & small screens
+   Reduced motion & small screens (Utility Agency refinement)
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-reveal="line"], .gold-draw::after {
     transition: none !important; transform: none !important; opacity: 1 !important;
   }
   .marquee-track, .marquee-track-rev { animation: none !important; }
-  .hero-bg { animation: none !important; }
+  .hero-bg-folding { animation: none !important; }
   *, *::before, *::after { scroll-behavior: auto !important; }
 }
 
@@ -320,7 +310,7 @@ a, button { cursor: pointer; }
   .btn-shimmer, .btn-outline-gold, .btn-whatsapp { min-height: 50px; }
   .photo-frame::before { transform: translate(8px, 8px); }
   
-  /* Mobile footer spacing fixes (Releaf-inspired, premium) */
+  /* Mobile footer spacing fixes (Utility Agency refinement) */
   footer {
     padding-bottom: 16rem; /* extra space for mobile WhatsApp bubble */
   }
@@ -329,5 +319,11 @@ a, button { cursor: pointer; }
   }
   footer .flex-col {
     gap: 3.5rem !important; /* generous spacing between brand, links, and connect */
+  }
+  
+  /* Utility Agency style: clean mobile sheet */
+  .mobile-sheet {
+    border-radius: 1.5rem !important;
+    padding: 1.5rem !important;
   }
 }
