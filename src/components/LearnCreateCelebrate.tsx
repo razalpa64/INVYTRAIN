@@ -17,16 +17,16 @@ const ITEMS = [
 export default function LearnCreateCelebrate() {
   const row = [...ITEMS, ...ITEMS];
   return (
-    <section className="overflow-hidden bg-coal py-4" aria-label="Services at a glance">
+    <section className="overflow-hidden bg-[#C49A48] py-3.5" aria-label="Services at a glance">
       <div className="marquee-track items-center gap-0">
         {row.map((item, i) => (
           <span
             key={`${item}-${i}`}
             aria-hidden={i >= ITEMS.length || undefined}
-            className="flex shrink-0 items-center gap-6 pr-6 text-[12px] font-extrabold uppercase tracking-[0.22em] text-coal-ink"
+            className="flex shrink-0 items-center gap-6 pr-6 text-[12px] font-extrabold uppercase tracking-[0.22em] text-[#16140F]"
           >
             {item}
-            <span className="text-[#C49A48]" aria-hidden>✦</span>
+            <span aria-hidden>✦</span>
           </span>
         ))}
       </div>
