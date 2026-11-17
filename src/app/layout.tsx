@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/chrome/SmoothScrollProvider";
 import ScrollProgress from "@/components/chrome/ScrollProgress";
@@ -17,6 +17,13 @@ const cormorant = Cormorant_Garamond({
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
   display: "swap",
 });
 
@@ -57,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${manrope.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
         {/* Google AdSense (Auto Ads) — raw snippet exactly as provided by
             Google (not next/script) so the AdSense verification crawler can

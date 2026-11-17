@@ -69,7 +69,10 @@
   --color-coal-muted:     var(--coal-muted);
   --color-coal-line:      var(--coal-line);
 
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Times New Roman", serif;
+  /* v4 type system: Space Grotesk carries all display type (the old
+     serif is retired to italic accents only, via .display-italic). */
+  --font-serif: var(--font-space), "Space Grotesk", var(--font-manrope), sans-serif;
+  --font-accent: var(--font-cormorant), "Cormorant Garamond", serif;
   --font-sans:  var(--font-manrope), "Manrope", "Inter", system-ui, sans-serif;
 }
 
@@ -167,15 +170,21 @@ a, button { cursor: pointer; }
    Typography helpers
    ========================================================================= */
 .font-display {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-family: var(--font-space), "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+/* Outlined display word (dark-hero kinetic type) */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(244, 239, 227, 0.9);
 }
 .display-italic {
-  font-family: var(--font-serif);
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--gold-dark);
 }
 .eyebrow {
