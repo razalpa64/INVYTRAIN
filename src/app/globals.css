@@ -319,4 +319,15 @@ a, button { cursor: pointer; }
   .eyebrow { font-size: 10px; letter-spacing: 0.2em; }
   .btn-shimmer, .btn-outline-gold, .btn-whatsapp { min-height: 50px; }
   .photo-frame::before { transform: translate(8px, 8px); }
+  
+  /* Mobile footer spacing fixes (Releaf-inspired, premium) */
+  footer {
+    padding-bottom: 16rem; /* extra space for mobile WhatsApp bubble */
+  }
+  footer > div > div:last-child {
+    margin-bottom: 2rem; /* spacing between columns and connect */
+  }
+  footer .flex-col {
+    gap: 3.5rem !important; /* generous spacing between brand, links, and connect */
+  }
 }
