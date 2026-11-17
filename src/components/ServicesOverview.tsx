@@ -28,10 +28,12 @@ function ImageTile({
   slug,
   className,
   titleSize = "text-3xl md:text-4xl",
+  blurb = true,
 }: {
   slug: string;
   className: string;
   titleSize?: string;
+  blurb?: boolean;
 }) {
   const v = venture(slug);
   return (
@@ -55,7 +57,9 @@ function ImageTile({
             ↗
           </span>
         </div>
-        <p className="mt-2 line-clamp-2 max-w-[46ch] text-[13px] leading-relaxed text-white/75">{v.description}</p>
+        {blurb ? (
+          <p className="mt-2 line-clamp-2 max-w-[46ch] text-[13px] leading-relaxed text-white/75">{v.description}</p>
+        ) : null}
         {startingPrice(slug) ? (
           <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/85">
             From <span className="font-serif text-base normal-case tracking-normal text-[#E9C979]">{startingPrice(slug)}</span>
@@ -97,7 +101,7 @@ export default function ServicesOverview() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-[215px]">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-[248px]">
           {/* Project — hero tile */}
           <Reveal className="md:col-span-2 md:row-span-2" delay={0}>
             <ImageTile slug="project" className="h-[380px] md:h-full" titleSize="text-4xl md:text-5xl" />
@@ -110,7 +114,7 @@ export default function ServicesOverview() {
 
           {/* Event — square tile */}
           <Reveal className="md:col-span-1" delay={120}>
-            <ImageTile slug="event" className="h-[240px] md:h-full" titleSize="text-3xl" />
+            <ImageTile slug="event" className="h-[240px] md:h-full" titleSize="text-3xl" blurb={false} />
           </Reveal>
 
           {/* Stat tile — charcoal proof */}
