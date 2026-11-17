@@ -22,17 +22,35 @@ const VENTURES = [
  * Floating pill menubar — detaches from the page edge, glass surface,
  * logo tile left, links centre, CTA right. On mobile the menu drops
  * as a rounded sheet directly beneath the pill.
+ *
+ * Releaf-inspired premium interaction: menu disappears while scrolling down
+ * (beyond 420px, >12px delta), appears while scrolling up (>6px delta) or near top.
  */
 export default function Nav({ brandName }: { brandName: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
-  // Deliberately boring behaviour: the bar is ALWAYS there. It only
-  // gains a stronger surface + slims down after scrolling. No
-  // hide/show choreography (previous iterations flickered under
-  // smooth-scroll, which read as the bar 'acting weird').
+  // Hide/show choreography: hide on scroll down (>12px beyond 420px), show on scroll up (>6px) or near top.
+  // This matches the Releaf-inspired premium interaction (menu disappears while scrolling down, appears while scrolling up).
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // Hide/show only on deliberate travel — small deltas (smooth-scroll
+      // easing, rubber-banding) must not toggle the bar, that reads as
+      // flicker. Hide: 12px+ downward beyond 420px. Show: 6px+ upward,
+      // or anywhere near the top.
+      if (y <= 420) {
+        setHidden(false);
+      } else if (y - lastY > 12) {
+        setHidden(true);
+      } else if (lastY - y > 6) {
+        setHidden(false);
+      }
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -43,11 +61,15 @@ export default function Nav({ brandName }: { brandName: string }) {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open ]);
+  }, [open]);
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[900] px-3 pt-3 sm:px-5 sm:pt-4">
+      <header
+        className={`fixed inset-x-0 top-0 z-[900] px-3 pt-3 transition-transform duration-300 ease-out sm:px-5 sm:pt-4 ${
+          hidden && !open ? "-translate-y-[130%]" : "translate-y-0"
+        }`}
+      >
         <div
           className={`mx-auto flex max-w-[1320px] items-center justify-between gap-3 rounded-[1.4rem] border px-3.5 transition-all duration-300 sm:px-4 ${
             scrolled ? "h-14" : "h-16"
