@@ -1,12 +1,15 @@
 import Nav from "@/components/chrome/Nav";
 import Hero from "@/components/Hero";
 import LearnCreateCelebrate from "@/components/LearnCreateCelebrate";
+import Manifesto from "@/components/Manifesto";
 import ServicesOverview from "@/components/ServicesOverview";
+import BuildForEveryone from "@/components/BuildForEveryone";
 import AboutSection from "@/components/AboutSection";
 import FeaturedWork from "@/components/FeaturedWork";
 import StatsSection from "@/components/StatsSection";
 import WhyInvytra from "@/components/WhyInvytra";
 import ProcessSection from "@/components/ProcessSection";
+import CraftStack from "@/components/CraftStack";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactExperience from "@/components/ContactExperience";
 import HomeFaq from "@/components/HomeFaq";
@@ -31,6 +34,7 @@ export default async function HomePage() {
     <>
       <Nav brandName={config.brand.name} />
       <main className="has-custom-cursor">
+        {/* 1 · Kinetic hero */}
         <Hero
           eyebrow={config.hero.eyebrow}
           titleLines={config.hero.titleLines}
@@ -39,25 +43,39 @@ export default async function HomePage() {
           secondaryCTA={config.hero.secondaryCTA}
         />
         <LearnCreateCelebrate />
+
+        {/* 2 · Manifesto statement */}
+        <Manifesto />
+
+        {/* 3 · The divisions (services showcase) */}
         <ServicesOverview />
+
+        {/* 4 · Built for everyone (audiences) */}
+        <BuildForEveryone />
 
         <AdUnit />
 
+        {/* 5 · Proof of work */}
         {config.settings.showFeatured ? <FeaturedWork items={featured} /> : null}
+
+        {/* 6 · Numbered principles / advantages */}
+        <WhyInvytra />
+
+        {/* 7 · Our story */}
+        <AboutSection />
+
+        {/* 8 · Engineering ecosystem + how it works */}
+        <CraftStack />
+        <ProcessSection />
 
         {config.settings.showStats ? <StatsSection stats={stats} /> : null}
 
-        <WhyInvytra />
-
-        <ProcessSection />
-
+        {/* 9 · Voices */}
         {config.settings.showTestimonials ? <TestimonialsSection testimonials={testimonials} /> : null}
 
-        <ContactExperience config={config} />
-
-        <AboutSection />
-
         <HomeFaq />
+
+        <ContactExperience config={config} />
 
         <FinalCTA />
       </main>

@@ -6,7 +6,7 @@ import { siteContent } from "@/lib/content";
 const CONTEXT: Record<string, string> = {
   project: "For students, founders & teams",
   learning: "For learners who want focused progress",
-  event: "For couples, families & hosts",
+  event: "For couples & hosts",
 };
 
 const ACCENT: Record<string, string> = {
@@ -28,12 +28,10 @@ function ImageTile({
   slug,
   className,
   titleSize = "text-3xl md:text-4xl",
-  blurb = true,
 }: {
   slug: string;
   className: string;
   titleSize?: string;
-  blurb?: boolean;
 }) {
   const v = venture(slug);
   return (
@@ -57,9 +55,6 @@ function ImageTile({
             ↗
           </span>
         </div>
-        {blurb ? (
-          <p className="mt-2 line-clamp-2 max-w-[46ch] text-[13px] leading-relaxed text-white/75">{v.description}</p>
-        ) : null}
         {startingPrice(slug) ? (
           <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/85">
             From <span className="font-serif text-base normal-case tracking-normal text-[#E9C979]">{startingPrice(slug)}</span>
@@ -114,7 +109,7 @@ export default function ServicesOverview() {
 
           {/* Event — square tile */}
           <Reveal className="md:col-span-1" delay={120}>
-            <ImageTile slug="event" className="h-[240px] md:h-full" titleSize="text-3xl" blurb={false} />
+            <ImageTile slug="event" className="h-[240px] md:h-full" titleSize="text-3xl" />
           </Reveal>
 
           {/* Stat tile — charcoal proof */}

@@ -25,27 +25,14 @@ const VENTURES = [
  */
 export default function Nav({ brandName }: { brandName: string }) {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Deliberately boring behaviour: the bar is ALWAYS there. It only
+  // gains a stronger surface + slims down after scrolling. No
+  // hide/show choreography (previous iterations flickered under
+  // smooth-scroll, which read as the bar 'acting weird').
   useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      // Hide/show only on deliberate travel — small deltas (smooth-scroll
-      // easing, rubber-banding) must not toggle the bar, that reads as
-      // flicker. Hide: 12px+ downward beyond 420px. Show: 6px+ upward,
-      // or anywhere near the top.
-      if (y <= 420) {
-        setHidden(false);
-      } else if (y - lastY > 12) {
-        setHidden(true);
-      } else if (lastY - y > 6) {
-        setHidden(false);
-      }
-      lastY = y;
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -60,13 +47,11 @@ export default function Nav({ brandName }: { brandName: string }) {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-[900] px-3 pt-3 transition-transform duration-300 ease-out sm:px-5 sm:pt-4 ${
-          hidden && !open ? "-translate-y-[130%]" : "translate-y-0"
-        }`}
-      >
+      <header className="fixed inset-x-0 top-0 z-[900] px-3 pt-3 sm:px-5 sm:pt-4">
         <div
-          className={`mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-3 rounded-[1.4rem] border px-3.5 transition-all duration-300 sm:px-4 ${
+          className={`mx-auto flex max-w-[1320px] items-center justify-between gap-3 rounded-[1.4rem] border px-3.5 transition-all duration-300 sm:px-4 ${
+            scrolled ? "h-14" : "h-16"
+          } ${
             scrolled
               ? "border-line bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] shadow-[0_18px_44px_rgba(22,20,15,0.14)] backdrop-blur-xl"
               : "border-white/25 bg-[color-mix(in_srgb,var(--bg)_68%,transparent)] shadow-[0_10px_30px_rgba(22,20,15,0.10)] backdrop-blur-xl"

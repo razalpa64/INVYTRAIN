@@ -60,13 +60,13 @@ export default function Hero({
             </Reveal>
             <h1 className="mt-8 font-display uppercase leading-[0.92]" aria-label="Learn. Create. Celebrate.">
               <Reveal delay={60}>
-                <span className="block text-[clamp(3.6rem,12vw,7.6rem)] text-coal-ink">Learn<span className="text-[#C49A48]">.</span></span>
+                <span className="block text-[clamp(3.1rem,7.5vw,6rem)] text-coal-ink">Learn<span className="text-[#C49A48]">.</span></span>
               </Reveal>
               <Reveal delay={140}>
-                <span className="text-outline block text-[clamp(3.6rem,12vw,7.6rem)]">Create<span style={{ WebkitTextStroke: "0px", color: "#C49A48" }}>.</span></span>
+                <span className="text-outline block text-[clamp(3.1rem,7.5vw,6rem)]">Create<span style={{ WebkitTextStroke: "0px", color: "#C49A48" }}>.</span></span>
               </Reveal>
               <Reveal delay={220}>
-                <span className="block text-[clamp(3.6rem,12vw,7.6rem)] text-coal-ink">
+                <span className="block text-[clamp(3.1rem,7.5vw,6rem)] text-coal-ink">
                   Celebrate<span className="text-[#C49A48]">.</span>
                 </span>
               </Reveal>
